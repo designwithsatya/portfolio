@@ -1,0 +1,187 @@
+:root {
+    --yellow: #F5C32C;
+    --orange: #FCA61F;
+    --black: #242D49;
+    --gray: #788097;
+    --blueCard: #DDF8FE;
+    --purple: rgb(238 210 255);
+    --boxShadow: 0px 19px 60px rgb(0 0 0 / 8%);
+    --orangeCard: rgba(252, 166, 31, 0.45);
+    --smboxShadow: -79px 51px 60px rgba(0, 0, 0, 0.08);
+}
+
+.App {
+    padding: 0.5rem 3.5rem;
+    overflow: hidden;
+    color: var(--black);
+}
+
+.button {
+    background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
+    box-shadow: 0px 20px 24px 3px rgba(251, 161, 40, 0.42);
+    border-radius: 34px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 11px 26px 11px 26px;
+}
+
+.button:hover {
+    background: white;
+    cursor: pointer;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+}
+
+@media screen and (max-width: 480px) {
+    .App {
+        padding: 0.5rem 1rem;
+
+    }
+}
+ul {
+    list-style: none;
+}
+
+ul li::before {
+    content: "\2022";
+    color: red;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+
+    .wavehand {
+            animation-name: wave-animation;
+            animation-duration: 2.5s;
+            animation-iteration-count: infinite;
+            transform-origin: 70% 70%;
+            display: inline-block;
+        }
+    
+        @keyframes wave-animation {
+            0% {
+                transform: rotate(0.0deg)
+            }
+    
+            10% {
+                transform: rotate(14.0deg)
+            }
+    
+            20% {
+                transform: rotate(-8.0deg)
+            }
+    
+            30% {
+                transform: rotate(14.0deg)
+            }
+    
+            40% {
+                transform: rotate(-4.0deg)
+            }
+    
+            50% {
+                transform: rotate(10.0deg)
+            }
+    
+            60% {
+                transform: rotate(0.0deg)
+            }
+    
+            100% {
+                transform: rotate(0.0deg)
+            }
+        }
+
+
+#mypro{
+   
+    border-radius: 10px;
+    height: 220px;
+    vertical-align: middle;
+    
+}
+.about{
+    border-bottom: 5px solid red;
+    margin-bottom: 30px;
+    padding-bottom: 5px;
+    width: -webkit-max-content;
+    width: max-content;
+}
+.cardhover{
+background: transparent;
+transition: transform 02s;
+cursor: pointer;
+box-shadow: 0px 10px 10px rgba(188, 92, 92, 0.3);
+color: black;
+
+}
+
+ .cardhover:hover::after {
+     top: 0;
+ }
+
+ .cardhover:hover {
+     transform: translateY(-10px);
+ }
+
+#mynamestyle{
+    color: #0de22a;
+    font-family: 'Love Light', cursive;
+    font-size: 30px;
+    text-align: center;
+
+}
+#mynamestyle1{
+    color: black;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1rem;
+    
+    
+}
+.css-14ckj51{
+    text-align: center;
+}
+.styles_typicalWrapper__1_Uvh::after{
+    color: #ffbd2f;
+    opacity: 1;
+    -webkit-animation: blink 1s infinite;
+    animation: blink 1s infinite;
+    padding-right: '20px';
+}
+#waves{
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+}
+
+/* bootstrap style */
+.w-100 {
+    width: 100% !important;
+    height: 400px;
+    border-radius: 5px;
+    
+}
+.carousel-caption h5{
+    color: #c6e70c;
+    font-weight: 600;
+    font-family: sans-serif;
+    
+}
+.carousel-caption p {
+   font-weight: 400px;
+}
+/* latest post */
+.css-1wxntxh-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select {
+    border: 2px solid #673de6;
+    
+}
+
+element.style {
+    height: 500%;
+    min-height: 501% ;
+}
+

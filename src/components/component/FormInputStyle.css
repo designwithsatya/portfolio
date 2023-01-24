@@ -1,0 +1,23 @@
+.formInputstyle {
+    /* display: flex;
+    flex-direction: column; */
+    width: 100%;
+}
+
+input {
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+#spanclass {
+    font-size: 12px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+
+
+
+
