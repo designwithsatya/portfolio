@@ -1,5 +1,5 @@
-import { useRef, useState, useContext, useEffect } from 'react';
-import { Link as RouterLink, NavLink, useNavigate } from 'react-router-dom';
+import { useRef, useState, useContext } from 'react';
+import { Link as RouterLink, NavLink } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton } from '@mui/material';
 import MenuPopover from '../../components/MenuPopover';
@@ -9,17 +9,14 @@ import { UserContext } from '../../App';
 const MENU_OPTIONS = [
   {
     label: 'Home',
-    icon: 'eva:home-fill',
     linkTo: '/',
   },
   {
     label: 'Register',
-    icon: 'eva:person-fill',
     linkTo: '/register',
   },
   {
     label: 'Login',
-    icon: 'eva:settings-2-fill',
     linkTo: '/login',
   },
 ];
@@ -27,8 +24,6 @@ const MENU_OPTIONS = [
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
-  const navigate = useNavigate();
-  const [userData, setUserData] = useState({});
   const { state } = useContext(UserContext);
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(null);
@@ -39,32 +34,6 @@ export default function AccountPopover() {
   const handleClose = () => {
     setOpen(null);
   };
-
-  const callAboutPage = async () => {
-    try {
-      const res = await fetch('/about', {
-        method: 'GET',
-        headers: {
-          Accept: 'appllication/json',
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      });
-
-      const data = await res.json();
-      setUserData(data);
-      if (!res.status === 200) {
-        const error = new Error(res.error);
-        throw error;
-      }
-    } catch (err) {
-      navigate('/2023/home', { replace: true });
-    }
-  };
-
-  useEffect(() => {
-    callAboutPage();
-  }, []);
 
   return (
     <>
@@ -109,9 +78,6 @@ export default function AccountPopover() {
               <Typography variant="subtitle2" noWrap>
                 {account.displayName}
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-                {account.email}
-              </Typography>
             </Box>
             <Divider sx={{ borderStyle: 'dashed' }} />
             <Stack sx={{ p: 1 }}>
@@ -126,10 +92,7 @@ export default function AccountPopover() {
           <>
             <Box sx={{ my: 1.5, px: 2.5 }}>
               <Typography variant="subtitle2" noWrap>
-                {userData.name}
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-                {userData.email}
+                {account.displayName}
               </Typography>
             </Box>
             <Divider sx={{ borderStyle: 'dashed' }} />

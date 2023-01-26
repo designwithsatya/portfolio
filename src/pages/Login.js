@@ -31,8 +31,8 @@ export default function LoginPage() {
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="body2" sx={{ mb: 2 }}>
-              <NavLink to="/register" style={{ textDecoration: 'none', cursor: 'pointer' }} variant="subtitle2">
-                Don’t have an account?
+              <NavLink to="/2023/home" style={{ textDecoration: 'none', cursor: 'pointer' }} variant="subtitle2">
+                Please Go To Home Page
               </NavLink>
             </Typography>
             <Divider sx={{ my: 3 }}>

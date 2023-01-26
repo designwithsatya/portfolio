@@ -1,5 +1,5 @@
-import React from 'react';
-// import Swal from 'sweetalert2';
+import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import '../components/component/FormInputStyle.css';
 import {
   Container,
@@ -15,9 +15,9 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Page from '../components/Page';
-
-// import InlineError from '../components/component/InlineError';
-// import { validateEmail } from '../components/component/Validation';
+import { SendEmail } from '../components/sendmail';
+import InlineError from '../components/component/InlineError';
+import { validateEmail } from '../components/component/Validation';
 
 const AccountStyle = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -28,52 +28,39 @@ const AccountStyle = styled('div')(({ theme }) => ({
 }));
 
 export default function EcommerceShop() {
-  // const [userData, setUserData] = useState({
-  //   name: '',
-  //   email: '',
-  //   message: '',
-  // });
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [emailError, setEmailError] = useState();
+  const [buttonLoading, setButtonLoading] = useState(false);
+  const [send, setSend] = useState();
 
-  // // const [emailError, setEmailError] = useState();
-  // // const [buttonLoading, setButtonLoading] = useState(false);
+  useEffect(() => {
+    validateEmail({ email, setEmailError });
+    if (send) {
+      Swal.fire({
+        icon: 'success',
+        title: send.msg,
+        showConfirmButton: false,
+        timer: 1500,
+      });
 
-  // // we are storing data in states
+      setFullName('');
+      setEmail('');
+      setMessage('');
+      setSend();
+    }
+  }, [email, send]);
 
-  // const handleInputs = (e) => {
-  //   const { name, value } = e.target;
-  //   setUserData({ ...userData, [name]: value });
-  // };
-
-  // const contactForm = async (e) => {
-  //   e.preventDefault();
-  //   // setButtonLoading(true);
-  //   const { name, email, message } = userData;
-
-  //   const res = await fetch('/contact', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       name,
-  //       email,
-  //       message,
-  //     }),
-  //   });
-
-  //   const data = await res.json();
-  //   if (!data) {
-  //     console.log('message not send ');
-  //   } else {
-  //     Swal.fire({
-  //       icon: 'success',
-  //       title: 'Message Sent!',
-  //       showConfirmButton: false,
-  //       timer: 1500,
-  //     });
-  //     setUserData({ ...userData, message: '' });
-  //   }
-  // };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setButtonLoading(true);
+    if (!emailError) {
+      SendEmail({ fullName, email, message, setSend }).then(() => {
+        setButtonLoading(false);
+      });
+    }
+  };
 
   return (
     <Page title="Contact Us">
@@ -131,16 +118,17 @@ export default function EcommerceShop() {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={6}>
               <Box sx={{ mb: 5, mx: 2.5 }}>
-                <form>
+                <form onSubmit={submitHandler}>
                   <Stack spacing={3}>
                     <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
                       <TextField
-                        name="name"
                         type="text"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
                         required
                         fullWidth
                         id="outlined-basic"
-                        label="Frist Name"
+                        label="Full Name"
                         variant="outlined"
                       />
 
@@ -148,33 +136,34 @@ export default function EcommerceShop() {
                         <TextField
                           type="email"
                           required
-                          name="summary"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                           fullWidth
                           id="outlined-basic"
                           label="Email"
                           variant="outlined"
                         />
-                        {/* <Typography variant="body2"> {emailError && <InlineError error={emailError} />}</Typography> */}
+                        <Typography variant="body2"> {emailError && <InlineError error={emailError} />}</Typography>
                       </div>
                     </Stack>
                     <TextareaAutosize
                       aria-label="minimum height"
                       minRows={6}
                       required
-                      name="message"
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
                       placeholder="How can help you"
                       style={{ width: '100%' }}
                     />
 
                     <Button
-                      // disabled={buttonLoading && true}
+                      disabled={buttonLoading && true}
                       type="submit"
                       fullWidth
                       size="large"
                       variant="containedInherit"
                     >
-                      SUBMIT
-                      {/* {buttonLoading ? 'Loading..' : 'SUBMIT'} */}
+                      {buttonLoading ? 'Loading..' : 'SUBMIT'}
                     </Button>
                   </Stack>
                 </form>

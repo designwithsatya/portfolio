@@ -34,7 +34,7 @@ export default function LoginForm() {
     if (res.status === 400 || !data) {
       Swal.fire({
         icon: 'error',
-        title: 'Invalid Credentials',
+        title: 'Sorry, you are not allowed to access this page',
         showConfirmButton: false,
         timer: 1500,
       });

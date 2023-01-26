@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 const account = {
   displayName: 'We Are Developer',
   email: 'designwithsatyendra@gmail.com',

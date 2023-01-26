@@ -2,17 +2,19 @@ import { useState, useEffect } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { Box, Typography, Button, Stack } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { sanitize } from 'dompurify';
 import { fDateTime } from '../../utils/formatTime';
 import Iconify from '../Iconify';
-// import { useMainContext } from '../../context/Context';
+import { useMainContext } from '../../context/Context';
 
 const StyledCover = styled('img')({
   width: '100%',
   objectFit: 'cover',
+  height: '300px',
 });
 
 export default function PostPage() {
-  // const { userInfo } = useMainContext();
+  const { userInfo } = useMainContext();
   const [postInfo, setPostInfo] = useState(null);
   const { id } = useParams();
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function PostPage() {
   }, []);
 
   if (!postInfo) return '';
-  console.log(postInfo.cover);
+  const base64String = btoa(String.fromCharCode(...new Uint8Array(postInfo.cover.data.data)));
 
   return (
     <>
@@ -38,29 +40,37 @@ export default function PostPage() {
         <Typography variant="subtitle1">Author - {postInfo.author.name}</Typography>
         <Typography variant="subtitle1"> {fDateTime(postInfo.createdAt)}</Typography>
       </Stack>
-
-      {/* {userInfo.id === postInfo.author._id ? (
-        <Box sx={{ mb: 2 }}>
+      <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
+        {userInfo === undefined ? null : (
+          <Box sx={{ mb: 2 }}>
+            <NavLink
+              style={{ cursor: 'pointer', color: '#6747c7', textDecoration: 'none' }}
+              className="edit-btn"
+              to={`/2023/blogs/edit/${postInfo._id}`}
+            >
+              Edit this post
+            </NavLink>
+          </Box>
+        )}
+        <Box sx={{ mb: 1 }}>
           <NavLink
-            style={{ cursor: 'pointer', textDecoration: 'none' }}
+            style={{ cursor: 'pointer', color: '#6747c7', textDecoration: 'none' }}
             className="edit-btn"
-            to={`/2023/blogs/edit/${postInfo._id}`}
+            to="/2023/home"
           >
-            Edit this post
+            Back to home
           </NavLink>
         </Box>
-      ) : null} */}
-
+      </Stack>
       <Box>
         <Box sx={{ mb: 2 }}>
-          <Typography variant="h6">{postInfo.title}</Typography>
+          <Typography variant="subtitle1">{postInfo.title}</Typography>
           <Typography variant="subtitle2">{postInfo.summary}</Typography>
         </Box>
-
         <Box sx={{ mb: 5 }}>
-          <StyledCover alt="cover" src={`http://localhost:5000/${postInfo.cover}`} />
+          <StyledCover alt="cover" src={`data:image/;base64,${base64String}`} />
         </Box>
-        <div className="content" dangerouslySetInnerHTML={{ __html: postInfo.content }} />
+        <div className="content" dangerouslySetInnerHTML={{ __html: sanitize(postInfo.content) }} />
         <Box sx={{ textAlign: 'center', mt: 5 }}>
           <NavLink
             style={{ textDecoration: 'none' }}

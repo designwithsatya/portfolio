@@ -17,8 +17,9 @@ const DashboardApp = React.lazy(() => import('./pages/DashboardApp'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const Service = React.lazy(() => import('./components/service/Service'));
 const About = React.lazy(() => import('./pages/About'));
-const Project = React.lazy(() => import('./pages/Project'));
+const CreatePost = React.lazy(() => import('./pages/CreatePost'));
 const BlogPage = React.lazy(() => import('./bloglayout/Blogs/BlogPage'));
+const PrivacyPolicy = React.lazy(() => import('./components/Policy/PrivacyPolicy'));
 //
 const SourseCode = React.lazy(() => import('./components/soursecode/SourseCode'));
 const BlogHome = React.lazy(() => import('./bloglayout/BlogHome'));
@@ -37,8 +38,9 @@ export default function Router() {
         { path: 'contact', element: <Contact /> },
         { path: 'about', element: <About /> },
         { path: 'service', element: <Service /> },
-        { path: 'project', element: <Project /> },
+        { path: 'project', element: <CreatePost /> },
         { path: 'blogpage', element: <BlogPage /> },
+        { path: 'privacypolicy', element: <PrivacyPolicy /> },
 
         {
           path: 'blogs',

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import { Card, Grid, Typography, CardContent } from '@mui/material';
+import { Card, Grid, Typography, CardContent, CardActions, Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { fDateTime } from '../../../utils/formatTime';
 
@@ -8,7 +8,7 @@ import { fDateTime } from '../../../utils/formatTime';
 
 const StyledCardMedia = styled('div')({
   position: 'relative',
-  paddingTop: 'calc(100% * 3 / 5)',
+  paddingTop: 'calc(100% * 2 / 5)',
 });
 
 const StyledTitle = styled('div')({
@@ -35,32 +35,30 @@ BlogPostCard.propTypes = {
 };
 
 export default function BlogPostCard({ post }) {
-  const { _id, title, summary, createdAt, cover } = post;
-  const resimg = `E:/blogapp/backend/${cover}`;
-  console.log(cover);
+  const { _id, title, createdAt, cover } = post;
+  const base64String = btoa(String.fromCharCode(...new Uint8Array(cover.data.data)));
+
   return (
-    <Grid item xs={12} sm={6} md={3}>
+    <Grid item xs={12} sm={6} md={4}>
       <Card sx={{ position: 'relative' }}>
         <StyledCardMedia>
-          <StyledCover alt={title} src={resimg} />
+          <StyledCover alt={title} src={`data:image/;base64,${base64String}`} />
         </StyledCardMedia>
-        <CardContent
-          sx={{
-            pt: 4,
-          }}
-        >
+        <CardContent>
           <Typography gutterBottom variant="caption" sx={{ color: 'text.disabled', display: 'block' }}>
             {fDateTime(createdAt)}
           </Typography>
-          <NavLink style={{ textDecoration: 'none' }} to={`/2023/blogs/post/${_id}`}>
-            <StyledTitle color="inherit" variant="body2">
-              {title}
-            </StyledTitle>
-          </NavLink>
-          <StyledTitle color="inherit" variant="body1">
-            {summary}
+          <StyledTitle color="inherit" variant="body2">
+            {title}
           </StyledTitle>
         </CardContent>
+        <CardActions>
+          <Button fullWidth size="small" variant="containedInherit">
+            <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to={`/2023/blogs/post/${_id}`}>
+              Learn More
+            </NavLink>
+          </Button>
+        </CardActions>
       </Card>
     </Grid>
   );

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Box } from '@mui/material';
 
 import { Outlet } from 'react-router-dom';
-// material
 import { styled } from '@mui/material/styles';
 import Footer from '../../pages/Footer';
 import DashboardNavbar from './DashboardNavbar';

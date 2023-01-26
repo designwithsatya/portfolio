@@ -3,16 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
-import BlogHeader from './BlogHeader';
 
-const sections = [
-  { title: 'HTML5', url: '#' },
-  { title: 'CSS3', url: '#' },
-  { title: 'JAVASCRIPT', url: '#' },
-  { title: 'REACT JS', url: '#' },
-  { title: 'MATERIAL UI', url: '#' },
-  { title: 'NEXT JS', url: '#' },
-];
 const mainFeaturedPost = {
   title: 'SATYENDRA SINGH',
   description: 'STORE OF WEB DEVELOPER AND TECHNOLOGIES OR NEW THINGS',
@@ -42,7 +33,6 @@ export default function Blog() {
   return (
     <>
       <CssBaseline />
-      <BlogHeader sections={sections} />
       <main>
         <MainFeaturedPost post={mainFeaturedPost} />
         <Grid container spacing={4}>

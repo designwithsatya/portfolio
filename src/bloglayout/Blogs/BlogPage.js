@@ -1,13 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Container, Box, Typography, Stack, Button } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Grid, Container, Box, Typography, Stack, Button, Pagination } from '@mui/material';
 import Page from '../../components/Page';
-import { BlogPostCard, BlogPostsSort } from '../../sections/@dashboard/blog';
+import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../sections/@dashboard/blog';
 
 const SORT_OPTIONS = [
   { value: 'latest', label: 'Latest' },
   { value: 'popular', label: 'Popular' },
   { value: 'oldest', label: 'Oldest' },
 ];
+
+const StackStyle = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  direction: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  marginBottom: '2rem',
+  [theme.breakpoints.up('lg')]: {
+    direction: 'row',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: '2rem',
+  },
+}));
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
@@ -43,12 +59,10 @@ export default function BlogPage() {
             have technical article also. Have a great day.
           </Typography>
           <Stack mb={5} direction="row" alignItems="center" justifyContent="space-between">
-            <Typography variant="h5" gutterBottom>
-              Blogs
-            </Typography>
+            <BlogPostsSearch />
             <BlogPostsSort options={SORT_OPTIONS} />
           </Stack>
-
+          {posts.length <= 0 ? <Typography variant="h6">404 Not Found</Typography> : null}
           <Grid container sx={{ mb: 5 }} spacing={3}>
             {slicedata.map((post, index) => (
               <BlogPostCard key={index} post={post} index={index} />
@@ -57,9 +71,12 @@ export default function BlogPage() {
           {isCompleted ? (
             ''
           ) : (
-            <Button onClick={() => LoadData()} sx={{ mb: 5 }} size="small" type="submit" variant="containedInherit">
-              View More
-            </Button>
+            <StackStyle>
+              <Button onClick={() => LoadData()} size="small" type="submit" variant="containedInherit">
+                View More
+              </Button>
+              <Pagination count={10} variant="outlined" shape="rounded" />
+            </StackStyle>
           )}
         </Container>
       </Page>

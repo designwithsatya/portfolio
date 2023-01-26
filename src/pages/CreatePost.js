@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import 'react-quill/dist/quill.snow.css';
-
-import { Stack, Button, Container, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Stack, Button, Container, Typography, FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
 import Editor from '../components/post/Editor';
 
-const Project = () => {
+const CreatePost = () => {
   const navigate = useNavigate();
-
   const [userData, setUserData] = useState({});
 
   const callAboutPage = async () => {
@@ -51,7 +49,7 @@ const Project = () => {
     data.set('category', category);
     data.set('file', files[0]);
     ev.preventDefault();
-    const response = await fetch('http://localhost:5000/post', {
+    const response = await fetch('/post', {
       method: 'POST',
       body: data,
       credentials: 'include',
@@ -68,10 +66,19 @@ const Project = () => {
   return (
     <>
       <Container>
-        <Stack alignItems="center" mb={5}>
+        <Stack alignItems="center" mb={5} direction="row" justifyContent="space-between">
           <Typography variant="h6" gutterBottom>
             What going in your mind {userData.name} ?
           </Typography>
+          {/* <Box sx={{ mb: 2 }}>
+            <NavLink
+              style={{ cursor: 'pointer', color: '#6747c7', textDecoration: 'none' }}
+              className="edit-btn"
+              to={`/edit/${postInfo._id}`}
+            >
+              Edit this post
+            </NavLink>
+          </Box> */}
         </Stack>
         <form onSubmit={createNewPost}>
           <Stack spacing={3}>
@@ -110,4 +117,4 @@ const Project = () => {
     </>
   );
 };
-export default Project;
+export default CreatePost;

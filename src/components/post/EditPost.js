@@ -1,97 +1,92 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Button, TextField, Stack, Container, Typography, TextareaAutosize } from '@mui/material';
-// import 'react-quill/dist/quill.snow.css';
-// import Editor from './Editor';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import 'react-quill/dist/quill.snow.css';
+import { Stack, Button, Container, Typography, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import Editor from './Editor';
 
-export default function EditPost() {
-  const { id } = useParams();
+const EditPost = () => {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({
-    title: '',
-    summary: '',
-    content: '',
-  });
-  const handleInputs = (e) => {
-    const { name, value } = e.target;
-    setUserData({ ...userData, [name]: value });
-  };
+  const { id } = useParams();
+  const [title, setTitle] = useState('');
+  const [summary, setSummary] = useState('');
+  const [content, setContent] = useState('');
+  const [category, setcategory] = useState('');
+  const [files, setFiles] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
+  async function updatePost(ev) {
+    const data = new FormData();
+    data.set('title', title);
+    data.set('summary', summary);
+    data.set('content', content);
+    data.set('category', category);
+    data.set('id', id);
+    if (files?.[0]) {
+      data.set('file', files?.[0]);
+    }
+    ev.preventDefault();
+    const response = await fetch('/post', {
+      method: 'PUT',
+      body: data,
+      credentials: 'include',
+    });
+
+    if (response.ok) {
+      setRedirect(true);
+    }
+  }
   useEffect(() => {
     fetch(`/post/${id}`).then((response) => {
       response.json().then((postInfo) => {
-        setUserData({ ...postInfo });
+        setTitle(postInfo.title);
+        setContent(postInfo.content);
+        setSummary(postInfo.summary);
+        setcategory(postInfo.category);
       });
     });
   }, []);
 
-  const UpdateForm = async (e) => {
-    e.preventDefault();
-    const { title, summary, content } = userData;
-    const res = await fetch('/post', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title,
-        summary,
-        content,
-      }),
-    });
-    const data = await res.json();
-    if (!data) {
-      console.log('message not send ');
-    } else {
-      setUserData({ ...userData });
-      navigate('/2023/home', { replace: true });
-    }
-  };
+  if (redirect) {
+    navigate(`/2023/blogs/post/${id}`, { replace: true });
+  }
 
   return (
     <>
       <Container>
-        <Typography variant="h6" sx={{ mb: 5 }}>
-          Update Post
-        </Typography>
-        <form method="PUT">
+        <Stack alignItems="center" mb={5} direction="row" justifyContent="center">
+          <Typography variant="h6" gutterBottom>
+            What you want to change ?
+          </Typography>
+        </Stack>
+        <form onSubmit={updatePost}>
           <Stack spacing={3}>
             <Stack direction={{ xs: 'column', sm: 'column' }} spacing={2}>
-              <TextField
-                name="title"
-                type="text"
-                value={userData.title}
-                onChange={handleInputs}
-                required
-                fullWidth
-                id="outlined-basic"
-                label="Title"
-                variant="outlined"
+              <input type="title" placeholder={'Title'} value={title} onChange={(ev) => setTitle(ev.target.value)} />
+              <input
+                type="summary"
+                placeholder={'Summary'}
+                value={summary}
+                onChange={(ev) => setSummary(ev.target.value)}
               />
-              <TextField
-                name="summary"
-                type="text"
-                value={userData.summary}
-                onChange={handleInputs}
-                required
-                fullWidth
-                id="outlined-basic"
-                label="summary"
-                variant="outlined"
-              />
-              <TextareaAutosize
-                aria-label="minimum height"
-                minRows={6}
-                required
-                name="content"
-                value={userData.content}
-                onChange={handleInputs}
-                placeholder="How can help you"
-                style={{ width: '100%' }}
-              />
-              {/* <Editor name="content" value={userData.content} onChange={handleInputs} /> */}
-              <Button type="submit" onClick={UpdateForm} fullWidth size="large" variant="containedInherit">
-                Create Post
+              <input type="file" onChange={(ev) => setFiles(ev.target.files)} />
+              <Editor value={content} onChange={setContent} />
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                <Select
+                  labelId="simple-select-label"
+                  id="demo-simple-select"
+                  label="category"
+                  name="category"
+                  value={category}
+                  onChange={(ev) => setcategory(ev.target.value)}
+                >
+                  <MenuItem value={'Technical'}>Technical</MenuItem>
+                  <MenuItem value={'Government'}>Government Vacancy</MenuItem>
+                  <MenuItem value={'IT'}>IT News</MenuItem>
+                </Select>
+              </FormControl>
+              <Button type="submit" fullWidth size="large" variant="containedInherit">
+                Update Post
               </Button>
             </Stack>
           </Stack>
@@ -99,4 +94,5 @@ export default function EditPost() {
       </Container>
     </>
   );
-}
+};
+export default EditPost;

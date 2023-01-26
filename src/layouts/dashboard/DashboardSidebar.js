@@ -6,7 +6,8 @@ import { Box, Link, Drawer, Typography, Avatar } from '@mui/material';
 import account from '../../_mock/account';
 // hooks
 import useResponsive from '../../hooks/useResponsive';
-import Scrollbar from '../../components/Scrollbar';
+import Scrollbar from '../../components/scrollbar';
+// import Scrollbar from '../../components/scrollbar';
 import NavSection from '../../components/NavSection';
 import navConfig from './NavConfig';
 

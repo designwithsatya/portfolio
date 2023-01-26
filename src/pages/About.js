@@ -28,6 +28,15 @@ const Stripe = styled(Box)(() => ({
   alignItems: 'center',
 }));
 
+/* ul li::before {
+    content: "\2022";
+    color: red;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+} */
+
 const About = () => (
   <>
     <Page title="About Me">

@@ -26,5 +26,5 @@ export function ContextProvider(props) {
 }
 
 ContextProvider.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.object.isRequired,
 };
