@@ -48,7 +48,7 @@ export default function AppWidgetSummary({ title, icon, color = 'primary', sx, .
             )} 100%)`,
         }}
       >
-        <Iconify className="icons" icon={icon} width={24} height={24} />
+        <Iconify className="icons" icon={icon} width={35} height={35} />
       </IconWrapperStyle>
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         {title}

@@ -1,11 +1,8 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import { Grid, Typography, Box, Button, Card, Container } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import DownloadIcon from '@mui/icons-material/Download';
 import Page from '../components/Page';
-import account from '../_mock/account';
-import myphoto from '../image/website2.svg';
+import Iconify from '../components/Iconify';
 
 const Follow = styled(Box)(() => ({
   position: 'absolute',
@@ -28,20 +25,11 @@ const Stripe = styled(Box)(() => ({
   alignItems: 'center',
 }));
 
-/* ul li::before {
-    content: "\2022";
-    color: red;
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-} */
-
 const About = () => (
   <>
     <Page title="About Me">
       <Container maxWidth="lg">
-        <Typography style={{ color: 'black' }} variant="h5" sx={{ mb: 2 }}>
+        <Typography variant="h5" sx={{ mb: 2 }}>
           We The Web Developer
         </Typography>
         <box style={{ textAlign: 'justify' }}>
@@ -69,7 +57,13 @@ const About = () => (
               <Box sx={{ mt: 5 }}>
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={6} md={6}>
-                    <Button fullWidth size="large" type="submit" variant="containedInherit" startIcon={<GitHubIcon />}>
+                    <Button
+                      fullWidth
+                      size="large"
+                      type="submit"
+                      variant="containedInherit"
+                      startIcon={<Iconify icon="eva:github-fill" />}
+                    >
                       View On GitHub
                     </Button>
                   </Grid>
@@ -79,9 +73,9 @@ const About = () => (
                       size="large"
                       type="submit"
                       variant="containedInherit"
-                      startIcon={<DownloadIcon />}
+                      startIcon={<Iconify icon="ci:youtube" />}
                     >
-                      View On GitHub
+                      View On YouTube
                       <Follow>
                         <Stripe />
                       </Follow>
@@ -92,7 +86,7 @@ const About = () => (
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
               <Box className="blur" style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}>
-                <img id="mypro" src={myphoto} alt="myimg" />
+                <img id="mypro" src="/static/illustrations/software_engineer.svg" alt="myimg" />
               </Box>
             </Grid>
           </Grid>
@@ -109,7 +103,7 @@ const About = () => (
                 <Box className="blur" style={{ display: 'flex', justifyContent: 'center', padding: '10px' }}>
                   <img
                     style={{ width: '400px', height: '50vh', textAlign: 'center' }}
-                    src={account.myprofile}
+                    src="/static/illustrations/about_us.svg"
                     alt="myimg"
                   />
                 </Box>

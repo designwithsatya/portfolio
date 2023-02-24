@@ -1,9 +1,5 @@
 import React, { useRef, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import { Button, Container } from '@mui/material';
 import CommentBox from '../comentbox/CommentBox';
 import SubMessage from './SubMessage';
@@ -75,9 +71,9 @@ const Message = (props) => {
             </div>
             <div className="messagetext">{UserMessage}</div>
             <section className="messageiconscontainer">
-              <ThumbUpIcon ref={likeIcons} onClick={likeComment} />
+              <Iconify icon="mdi:like" ref={likeIcons} onClick={likeComment} />
               <div ref={numLikes}>{Likes}</div>
-              <ThumbDownAltIcon />
+              <Iconify icon="mdi:dislike" />
               {!Editable ? (
                 <Button type="button" onClick={ChangeOpenReply}>
                   Reply
@@ -95,7 +91,7 @@ const Message = (props) => {
           {Replies.length > 0 && (
             <section className="arrowreplies">
               <Button
-                startIcon={arrowUp ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                startIcon={arrowUp ? <Iconify icon="eva:plus-fill" /> : <Iconify icon="eva:plus-fill" />}
                 type="button"
                 onClick={changeArrow}
               >

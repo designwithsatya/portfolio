@@ -39,7 +39,6 @@ export default function LoginForm() {
         timer: 1500,
       });
     } else {
-      // console.log(data);
       setUserInfo(data);
       dispatch({ type: 'USER', payload: true });
       navigate('/2023/home', { replace: true });
@@ -73,7 +72,6 @@ export default function LoginForm() {
           }}
         />
       </Stack>
-
       <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ my: 2 }}>
         <Checkbox name="remember" label="Remember me" />
         <NavLink

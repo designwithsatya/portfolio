@@ -1,10 +1,9 @@
 import { Typography, Box, Container, Button } from '@mui/material';
 import React, { useRef, useState } from 'react';
-import CancelIcon from '@mui/icons-material/Cancel';
-import SendIcon from '@mui/icons-material/Send';
 import { useMainContext } from '../../context/Context';
 
 import './topcommentbox.css';
+import Iconify from '../Iconify';
 
 const TopCommentBox = () => {
   const { setmessageReset, setCommentIncreement } = useMainContext();
@@ -50,7 +49,6 @@ const TopCommentBox = () => {
             Post Comments
           </Typography>
         </Box>
-
         <form>
           <section className="CommentBox">
             <input
@@ -74,14 +72,14 @@ const TopCommentBox = () => {
                   className="commentbutton sendbutton"
                   disabled={enablebtn}
                   onClick={sendComment}
-                  endIcon={<SendIcon />}
+                  startIcon={<Iconify icon="ic:sharp-add-comment" />}
                 >
                   Commet
                 </Button>
                 <Button
                   variant="contained"
                   color="error"
-                  startIcon={<CancelIcon />}
+                  startIcon={<Iconify icon="ic:baseline-cancel" />}
                   type="button"
                   className="commentbutton"
                   onClick={() => {

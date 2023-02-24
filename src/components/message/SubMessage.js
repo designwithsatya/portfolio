@@ -1,8 +1,5 @@
 import React, { useRef, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-
 import { Button, Container } from '@mui/material';
 import SubCommentBox from '../comentbox/subcommentbox/SubCommentBox';
 import { useMainContext } from '../../context/Context';
@@ -71,9 +68,9 @@ const SubMessage = (props) => {
             </div>
             <div className="messagetext">{UserMessage}</div>
             <section className="messageiconscontainer">
-              <ThumbUpIcon ref={likeIcons} onClick={likeComment} />
+              <Iconify icon="mdi:like" ref={likeIcons} onClick={likeComment} />
               <div ref={numLikes}>{Likes}</div>
-              <ThumbDownAltIcon />
+              <Iconify icon="mdi:dislike" />
               {!Editable ? (
                 <Button type="button" onClick={ChangeOpenReply}>
                   Reply

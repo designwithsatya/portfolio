@@ -1,11 +1,21 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@mui/material/Paper';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { NavLink } from 'react-router-dom';
 import SocialShare from '../components/socialshare';
 
+const Item = styled(Paper)(({ theme }) => ({
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.grey[800],
+  backgroundColor: theme.palette.grey[500_12],
+  '&:hover': {
+    color: theme.palette.grey[500],
+  },
+}));
 const PostStyle = styled(Box)({
   display: 'flex',
   gap: '10px',
@@ -41,7 +51,7 @@ function Sidebar(props) {
   return (
     <>
       <Box sx={{ textAlign: 'center' }}>
-        <Paper elevation={0} sx={{ p: 2, m: '1px' }}>
+        <Paper elevation={0} sx={{ p: 5 }}>
           <div
             className="g-ytsubscribe"
             data-channelid="UC-9n9c2tO1z8CP_WkicYtVQ"
@@ -74,26 +84,20 @@ function Sidebar(props) {
           </NavLink>
         </PostStyle>
       ))}
-
       <Box sx={{ mt: 5, mb: 5, bgcolor: 'grey.300' }}>
         <Paper elevation={0} sx={{ p: 2, bgcolor: 'grey.300' }}>
-          <Typography variant="h5" gutterBottom sx={{ mt: 3, textAlign: 'center' }}>
-            Popular Technologies
-          </Typography>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={2}>
+              {tutorials.map((tutorial, index) => (
+                <Grid key={index} item xs={4} md={4}>
+                  <NavLink style={{ textDecoration: 'none' }} to={tutorial.url}>
+                    <Item>{tutorial.title}</Item>
+                  </NavLink>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </Paper>
-        {tutorials.map((tutorial, index) => (
-          <Paper key={index} elevation={0} sx={{ p: 2, bgcolor: 'grey.300' }}>
-            <NavLink
-              to="/"
-              style={{ color: '#0645ad', textDecoration: 'none' }}
-              display="block"
-              variant="body1"
-              key={tutorial.title}
-            >
-              {tutorial.title}
-            </NavLink>
-          </Paper>
-        ))}
       </Box>
       <Paper elevation={0} sx={{ p: 1, mb: 5, bgcolor: 'grey.300' }}>
         <Typography variant="h6" gutterBottom sx={{ mt: 2, textAlign: 'center' }}>

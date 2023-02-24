@@ -14,19 +14,19 @@ const sidebar = {
   ],
   tutorials: [
     {
-      title: 'Html || Html5',
+      title: 'Html',
       url: '',
     },
     {
-      title: 'Css || Css3',
+      title: 'Css',
       url: '',
     },
     {
-      title: 'JavaScript || EcmaScript15',
+      title: 'JavaScript',
       url: '',
     },
     {
-      title: 'React JS || Next JS',
+      title: 'React',
       url: '',
     },
     {
@@ -34,15 +34,19 @@ const sidebar = {
       url: '',
     },
     {
-      title: 'Git || GitLab',
+      title: 'Git',
       url: '',
     },
     {
-      title: 'Node JS || Express JS',
+      title: 'Node JS',
       url: '',
     },
     {
-      title: 'Java Programming || Spring Boot',
+      title: 'Spring Boot',
+      url: '',
+    },
+    {
+      title: 'Video Editor',
       url: '',
     },
   ],

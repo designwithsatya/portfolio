@@ -6,7 +6,7 @@ import AuthSocial from '../sections/auth/AuthSocial';
 
 const RootStyle = styled(Box)(({ theme }) => ({
   background: `url('https://images.unsplash.com/photo-1624377632657-3902bfd35958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80')`,
-  height: '100vh',
+  minHeight: '100vh',
   width: '100%',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
@@ -21,9 +21,9 @@ const RootStyle = styled(Box)(({ theme }) => ({
   color: 'white',
   overflow: 'hidden',
   marginTop: '-4%',
-  marginBottom: '20px',
+  // marginBottom: '20px',
   [theme.breakpoints.down('sm')]: {
-    height: '50vh',
+    minHeight: '50vh',
   },
 }));
 
@@ -63,7 +63,7 @@ const Home = () => (
           ABOUT ME
         </Typography>
         <Box style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <span style={{ color: '#ffbd2f', fontWeight: '900' }}>A WEBSITE FOR</span>
+          <span style={{ color: '#ff7a18', fontWeight: '900' }}>A WEBSITE FOR</span>
           <MyTypoGraphyAuto>
             <span>
               <Typical

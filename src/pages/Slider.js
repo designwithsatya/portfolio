@@ -20,26 +20,11 @@ const Slider = () => (
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img
-              src="https://images.pexels.com/photos/5380594/pexels-photo-5380594.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              src="https://solctech.com/images/software%20support/software%20development%2001.jpg"
               className="d-block w-100"
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block">
-              <Typography variant="h5">Satyendra Singh, Designwithsatya</Typography>
-              <Typography variant="subtitle1">
-                "Satyendra Singh Rajpoot ka DesignWithSatya is a web developer and Youtuber.DesignWithSatya want to help
-                others by providing free videos on Web Development and Schools/University important topics."
-              </Typography>
-            </div>
-          </div>
-          <div className="carousel-item active">
-            <img
-              src="https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-              className="d-block w-100"
-              alt="..."
-            />
-            <div className="carousel-caption d-none d-md-block">
-              <Typography variant="h5">Satyendra Singh, Youtuber</Typography>
               <Typography variant="subtitle1">
                 "Satyendra Singh Rajpoot ka DesignWithSatya is a web developer and Youtuber.DesignWithSatya want to help
                 others by providing free videos on Web Development and Schools/University important topics."
@@ -48,12 +33,11 @@ const Slider = () => (
           </div>
           <div className="carousel-item">
             <img
-              src="https://images.pexels.com/photos/6963945/pexels-photo-6963945.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              src="http://trotons.com/wp-content/uploads/2019/11/Outsourcing-Software-Development-Projects.jpg"
               className="d-block w-100"
               alt="..."
             />
             <div className="carousel-caption d-none d-md-block">
-              <Typography variant="h5">Satyendra Singh, Web Developer</Typography>
               <Typography variant="subtitle1">
                 "Satyendra Singh Rajpoot ka DesignWithSatya is a web developer and Youtuber.DesignWithSatya want to help
                 others by providing free videos on Web Development and Schools/University important topics."

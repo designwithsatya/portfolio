@@ -101,9 +101,7 @@ ul {
     width: max-content;
 }
 .cardhover{
-background: transparent;
 transition: transform 02s;
-cursor: pointer;
 box-shadow: 0px 10px 10px rgba(188, 92, 92, 0.3);
 color: black;
 
@@ -116,21 +114,15 @@ color: black;
  .cardhover:hover {
      transform: translateY(-10px);
  }
+ .cardhovereffect:hover{
+    box-shadow: 0px 10px 10px rgba(151, 166, 243, 0.3);
+ }
 
-#mynamestyle{
-    color: #0de22a;
-    font-family: 'Love Light', cursive;
-    font-size: 30px;
-    text-align: center;
 
-}
 #mynamestyle1{
-    color: black;
+    color: #212B36;
     font-weight: 700;
     letter-spacing: 1px;
-    font-size: 1rem;
-    
-    
 }
 .css-14ckj51{
     text-align: center;
@@ -195,12 +187,12 @@ element.style {
     height: 300px;
 }
 /* login pass icons */
-.css-1t9pz9x {
+/* .css-1t9pz9x {
     width: 20px;
     height: 20px;
     color: black;
-}
-/* dropdown menu color */
+} */
+ /* dropdown menu color */
 .css-alxg4i-MuiSvgIcon-root-MuiSelect-icon {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -221,4 +213,4 @@ element.style {
     top: calc(50% - 0.5em);
     pointer-events: none;
     color: #F9FAFB;
-}
+} 

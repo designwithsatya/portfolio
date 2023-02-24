@@ -1,11 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Container, Button } from '@mui/material';
-import CancelIcon from '@mui/icons-material/Cancel';
-import SendIcon from '@mui/icons-material/Send';
 import PropTypes from 'prop-types';
 import { useOpenReply } from '../../message/Message';
 import { useMainContext } from '../../../context/Context';
 import '../topcommentbox.css';
+import Iconify from '../../Iconify';
 
 const SubCommentBox = (props) => {
   const { parentKey } = props;
@@ -65,14 +64,14 @@ const SubCommentBox = (props) => {
                   className="commentbutton sendbutton"
                   disabled={enablebtn}
                   onClick={sendComment}
-                  endIcon={<SendIcon />}
+                  startIcon={<Iconify icon="ic:sharp-add-comment" />}
                 >
                   Commet
                 </Button>
                 <Button
                   variant="contained"
                   color="error"
-                  startIcon={<CancelIcon />}
+                  startIcon={<Iconify icon="ic:baseline-cancel" />}
                   type="button"
                   className="commentbutton"
                   onClick={() => {

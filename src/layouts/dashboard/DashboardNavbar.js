@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 // material
 import { alpha, styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import { Box, Stack, AppBar, Toolbar, Typography } from '@mui/material';
+import { Box, Stack, AppBar, Toolbar, Typography, Tooltip } from '@mui/material';
 
 // components
 
 import Iconify from '../../components/Iconify';
 import AccountPopover from './AccountPopover';
+import ScrollIndicator from '../../components/scroll/ScrollIndicator';
 
 const APPBAR_MOBILE = 64;
 const APPBAR_DESKTOP = 65;
@@ -28,6 +29,9 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
     padding: theme.spacing(0, 5),
   },
 }));
+const CourcesStyle = styled(Typography)(({ theme }) => ({
+  color: theme.palette.grey[800],
+}));
 
 DashboardNavbar.propTypes = {
   onOpenSidebar: PropTypes.func,
@@ -40,19 +44,19 @@ export default function DashboardNavbar({ onOpenSidebar }) {
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static" color="inherit">
             <ToolbarStyle>
-              <IconButton onClick={onOpenSidebar} sx={{ color: 'black', mr: 1 }}>
-                <Iconify icon="eva:menu-2-fill" />
+              <IconButton onClick={onOpenSidebar} sx={{ color: '#212B36', mr: 1 }}>
+                <Tooltip title="Menu" arrow>
+                  <Iconify icon="eva:menu-2-fill" />
+                </Tooltip>
               </IconButton>
-
-              <Typography id="mynamestyle1" variant="h6" sx={{ flexGrow: 1 }}>
+              <Typography id="mynamestyle1" variant="subtitle2" sx={{ flexGrow: 1 }}>
                 <NavLink id="mynamestyle1" to="/" style={{ textDecoration: 'none' }}>
-                  <span style={{ color: '#00BFFF' }}>D</span>ESIGN<span style={{ color: '#00BFFF' }}>W</span>ITH
-                  <span style={{ color: '#00BFFF' }}>S</span>ATYA
+                  DESIGNWITHSATYA
                 </NavLink>
               </Typography>
               <Stack direction="row" alignItems="center" spacing={{ xs: 1.5, sm: 1.5 }}>
                 <NavLink
-                  to="/2023/blogs/blog1"
+                  to="/2023/blogs/sourcecode"
                   style={{
                     textDecoration: 'none',
                     color: '#fff',
@@ -61,6 +65,7 @@ export default function DashboardNavbar({ onOpenSidebar }) {
                     fontWeight: 'bold',
                     padding: '7px',
                     borderRadius: '3px',
+                    boxShadow: '0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f',
                   }}
                 >
                   SOURCECODE
@@ -68,6 +73,7 @@ export default function DashboardNavbar({ onOpenSidebar }) {
                 <AccountPopover />
               </Stack>
             </ToolbarStyle>
+            <ScrollIndicator />
           </AppBar>
         </Box>
       </RootStyle>

@@ -1,8 +1,7 @@
 const account = {
   displayName: 'We Are Developer',
-  email: 'designwithsatyendra@gmail.com',
-  photoURL: '/static/images/avatars/avatar_8.jpg',
-  myprofile: '/static/illustrations/undraw_about_us_page_re_2jfm.svg',
+  email: 'satyendra@gmail.com',
+  photoURL: '/static/images/avatars/avatar_14.jpg',
   role: 'Web Developer',
 };
 

@@ -1,5 +1,5 @@
 const sourcecodeprice = {
-  price: 50,
+  price: 5,
 };
 
 export default sourcecodeprice;

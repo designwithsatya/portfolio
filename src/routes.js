@@ -3,11 +3,10 @@ import { Navigate, useRoutes } from 'react-router-dom';
 import LogoOnlyLayout from './layouts/LogoOnlyLayout';
 
 import NotFound from './pages/Page404';
+import NotAccess from './pages/Page403';
 import Register from './pages/LoginPage';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
-import PostPage from './components/post/PostPage';
-import EditPost from './components/post/EditPost';
 // dash and blog layouts
 const DashboardLayout = React.lazy(() => import('./layouts/dashboard'));
 const BlogsLayout = React.lazy(() => import('./bloglayout'));
@@ -19,11 +18,11 @@ const Service = React.lazy(() => import('./components/service/Service'));
 const About = React.lazy(() => import('./pages/About'));
 const CreatePost = React.lazy(() => import('./pages/CreatePost'));
 const BlogPage = React.lazy(() => import('./bloglayout/Blogs/BlogPage'));
-const PrivacyPolicy = React.lazy(() => import('./components/Policy/PrivacyPolicy'));
-//
+const PrivacyPolicy = React.lazy(() => import('./components/Policy/PolicyPage'));
 const SourseCode = React.lazy(() => import('./components/soursecode/SourseCode'));
-const BlogHome = React.lazy(() => import('./bloglayout/BlogHome'));
-const Blog2 = React.lazy(() => import('./bloglayout/Blogs/Blog2'));
+const Traffic = React.lazy(() => import('./pages/TrafficBySite'));
+const PostPage = React.lazy(() => import('./components/post/PostPage'));
+const EditPost = React.lazy(() => import('./components/post/EditPost'));
 
 export default function Router() {
   return useRoutes([
@@ -41,6 +40,7 @@ export default function Router() {
         { path: 'project', element: <CreatePost /> },
         { path: 'blogpage', element: <BlogPage /> },
         { path: 'privacypolicy', element: <PrivacyPolicy /> },
+        { path: 'preview', element: <Traffic /> },
 
         {
           path: 'blogs',
@@ -48,14 +48,6 @@ export default function Router() {
           children: [
             { path: '/2023/blogs/post/:id', element: <PostPage /> },
             { path: '/2023/blogs/edit/:id', element: <EditPost /> },
-            {
-              path: 'blog1',
-              element: <BlogHome />,
-            },
-            {
-              path: 'blog2',
-              element: <Blog2 />,
-            },
             {
               path: 'sourcecode',
               element: <SourseCode />,
@@ -72,6 +64,7 @@ export default function Router() {
         { path: '/', element: <Navigate to="/2023/home" /> },
         { path: '404', element: <NotFound /> },
         { path: '*', element: <Navigate to="/404" /> },
+        { path: 'nopermission', element: <NotAccess /> },
         { path: 'register', element: <Register /> },
         { path: 'login', element: <Login /> },
         { path: 'logout', element: <Logout /> },

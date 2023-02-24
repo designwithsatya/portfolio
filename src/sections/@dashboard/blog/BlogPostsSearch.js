@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+import Iconify from '../../../components/Iconify';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -47,7 +47,7 @@ export default function BlogPostsSearch() {
   return (
     <Search>
       <SearchIconWrapper>
-        <SearchIcon />
+        <Iconify icon="eva:search-fill" />
       </SearchIconWrapper>
       <StyledInputBase placeholder="Post Search…" inputProps={{ 'aria-label': 'search' }} />
     </Search>

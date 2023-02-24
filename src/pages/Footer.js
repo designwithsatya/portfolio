@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AuthSocial from '../sections/auth/AuthSocial';
 
@@ -11,49 +11,63 @@ const MainBox = styled(Box)(() => ({
   marginTop: '5rem',
   padding: '15px',
   paddingBottom: '20px',
+  position: 'relative',
+}));
+
+const FooterStyle = styled(Box)(({ theme }) => ({
+  padding: '1.5rem',
+  margin: '-5rem 0 0',
+  position: 'absolute',
+  borderRadius: Number(theme.shape.borderRadius) * 1.2,
+  backgroundColor: theme.palette.grey[500_12],
 }));
 const Footer = () => (
   <>
-    <MainBox>
-      <Grid container spacing={5}>
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <Box sx={{ mb: 1, mx: 2.5 }}>
-            <Typography variant="h6">Policy</Typography>
-          </Box>
+    <Container maxWidth="xl">
+      <FooterStyle>
+        <Typography variant="h6">Keep up to date on web dev</Typography>
+      </FooterStyle>
+      <MainBox>
+        <Grid container spacing={5}>
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <Box sx={{ mb: 1, mx: 2.5 }}>
+              <Typography variant="h6">Policy</Typography>
+            </Box>
 
-          <Typography variant="body2">
-            <NavLink to="/2023/privacypolicy" style={{ textDecoration: 'none', color: 'inherit' }}>
-              Privacy Policy
-            </NavLink>
-          </Typography>
+            <Typography variant="body2">
+              <NavLink to="/2023/privacypolicy" style={{ textDecoration: 'none', color: 'inherit' }}>
+                Privacy Policy
+              </NavLink>
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <Box sx={{ mb: 1, mx: 2.5 }}>
+              <Typography variant="h6"> Follow Us</Typography>
+            </Box>
+            <Box
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignContent: 'center',
+                alignItems: 'center',
+                padding: '10px',
+              }}
+            >
+              <AuthSocial />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={12} md={4} lg={4}>
+            <Box sx={{ mb: 1, mx: 2.5 }}>
+              <Typography variant="h6"> Call US</Typography>
+            </Box>
+            <Typography variant="body2">+917869351845</Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <Box sx={{ mb: 1, mx: 2.5 }}>
-            <Typography variant="h6"> Follow Us</Typography>
-          </Box>
-          <Box
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignContent: 'center',
-              alignItems: 'center',
-              padding: '10px',
-            }}
-          >
-            <AuthSocial />
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={12} md={4} lg={4}>
-          <Box sx={{ mb: 1, mx: 2.5 }}>
-            <Typography variant="h6"> Call US</Typography>
-          </Box>
-          <Typography variant="body2">+917869351845</Typography>
-        </Grid>
-      </Grid>
-      <Box style={{ marginTop: '5px' }}>
-        <Typography variant="subtitle1">Copyright © 2022 by Satyendra Rajpoot. All Right Reserved.</Typography>
-      </Box>
-    </MainBox>
+        <Box style={{ marginTop: '5px' }}>
+          <Typography variant="subtitle1">Copyright © 2022 by Satyendra Rajpoot. All Right Reserved.</Typography>
+        </Box>
+      </MainBox>
+    </Container>
   </>
 );
 

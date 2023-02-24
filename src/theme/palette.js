@@ -4,7 +4,6 @@ function createGradient(color1, color2) {
   return `linear-gradient(to bottom, ${color1}, ${color2})`;
 }
 
-// SETUP COLORS
 const BLUEGRAY = {
   100: '#673de6',
   200: '#2756c1',
@@ -128,7 +127,6 @@ const GRADIENTS = {
 };
 
 const palette = {
-  blugray: { ...BLUEGRAY },
   common: { black: '#000', white: '#fff' },
   primary: { ...PRIMARY },
   secondary: { ...SECONDARY },
@@ -140,11 +138,12 @@ const palette = {
   gray: { ...GRAY },
   pink: { ...PINK },
   pink2: { ...PINK2 },
+  blugray: { ...BLUEGRAY },
   grey: GREY,
   gradients: GRADIENTS,
-  divider: GREY[500_24],
-  text: { primary: GREY[900], secondary: GREY[900], disabled: GREY[700] },
-  background: { paper: GREY[200], default: GREY[200], neutral: GREY[200] },
+  divider: alpha(GREY[500], 0.24),
+  text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
+  background: { paper: '#fff', default: GREY[100], neutral: GREY[200] },
   action: {
     active: GREY[100],
     hover: GREY[500_8],

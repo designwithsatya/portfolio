@@ -7,9 +7,8 @@ import FeaturedPost from './FeaturedPost';
 const mainFeaturedPost = {
   title: 'SATYENDRA SINGH',
   description: 'STORE OF WEB DEVELOPER AND TECHNOLOGIES OR NEW THINGS',
-  image: '/assets/images/covers/success.jpg',
+  image: '/assets/images/covers/shared-colors@2x.png',
   imageText: 'description',
-  linkText: 'Continue reading…',
 };
 
 const featuredPosts = [

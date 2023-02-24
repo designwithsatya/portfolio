@@ -1,5 +1,5 @@
 import { useRef, useState, useContext } from 'react';
-import { Link as RouterLink, NavLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton } from '@mui/material';
 import MenuPopover from '../../components/MenuPopover';
@@ -12,15 +12,28 @@ const MENU_OPTIONS = [
     linkTo: '/',
   },
   {
-    label: 'Register',
-    linkTo: '/register',
-  },
-  {
     label: 'Login',
     linkTo: '/login',
   },
 ];
-
+const ADMIN_OPTION = [
+  {
+    label: 'Home',
+    linkTo: '/',
+  },
+  {
+    label: 'Register',
+    linkTo: '/register',
+  },
+  {
+    label: 'Create Post',
+    linkTo: '/2023/project',
+  },
+  {
+    label: 'Logout',
+    linkTo: '/logout',
+  },
+];
 // ----------------------------------------------------------------------
 
 export default function AccountPopover() {
@@ -62,10 +75,13 @@ export default function AccountPopover() {
         open={Boolean(open)}
         anchorEl={open}
         onClose={handleClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         sx={{
           p: 0,
           mt: 1.5,
           ml: 0.75,
+          width: 180,
           '& .MuiMenuItem-root': {
             typography: 'body2',
             borderRadius: 0.75,
@@ -78,8 +94,12 @@ export default function AccountPopover() {
               <Typography variant="subtitle2" noWrap>
                 {account.displayName}
               </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+                {account.email}
+              </Typography>
             </Box>
             <Divider sx={{ borderStyle: 'dashed' }} />
+
             <Stack sx={{ p: 1 }}>
               {MENU_OPTIONS.map((option) => (
                 <MenuItem key={option.label} to={option.linkTo} component={RouterLink} onClick={handleClose}>
@@ -92,15 +112,17 @@ export default function AccountPopover() {
           <>
             <Box sx={{ my: 1.5, px: 2.5 }}>
               <Typography variant="subtitle2" noWrap>
-                {account.displayName}
+                Admin Panel
               </Typography>
             </Box>
             <Divider sx={{ borderStyle: 'dashed' }} />
-            <MenuItem onClick={handleClose} sx={{ m: 1 }}>
-              <NavLink style={{ textDecoration: 'none', color: 'inherit' }} to="/logout">
-                Logout
-              </NavLink>
-            </MenuItem>
+            <Stack sx={{ p: 1 }}>
+              {ADMIN_OPTION.map((option) => (
+                <MenuItem key={option.label} to={option.linkTo} component={RouterLink} onClick={handleClose}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </Stack>
           </>
         )}
       </MenuPopover>

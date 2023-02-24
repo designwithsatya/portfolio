@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
-import { Grid, Container, Box, Typography, Stack, Button, Pagination } from '@mui/material';
+import { Grid, Container, Box, Typography, Stack, Button } from '@mui/material';
 import Page from '../../components/Page';
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from '../../sections/@dashboard/blog';
+import Iconify from '../../components/Iconify';
 
 const SORT_OPTIONS = [
   { value: 'latest', label: 'Latest' },
@@ -14,7 +15,7 @@ const StackStyle = styled(Box)(({ theme }) => ({
   display: 'flex',
   direction: 'row',
   alignItems: 'center',
-  justifyContent: 'space-between',
+  justifyContent: 'center',
   marginBottom: '2rem',
   [theme.breakpoints.up('lg')]: {
     direction: 'row',
@@ -27,24 +28,31 @@ const StackStyle = styled(Box)(({ theme }) => ({
 
 export default function BlogPage() {
   const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetch('/post').then((response) => {
-      response.json().then((posts) => {
-        setPosts(posts);
-      });
+  const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [buttonLoading, setButtonLoading] = useState(true);
+
+  const handlePageChange = async () => {
+    const res = await fetch(`/post?page=${currentPage}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
-  }, []);
-  const [isCompleted, setIsCompleted] = useState(false);
-  const [numberofelement, setnumberofelement] = useState(4);
-  const slicedata = posts.slice(0, numberofelement);
-  const LoadData = () => {
-    setnumberofelement(numberofelement + numberofelement);
-    if (numberofelement >= slicedata.length) {
-      setIsCompleted(true);
+    const postdata = await res.json();
+    if (!res.status === 200) {
+      const error = new Error(res.error);
+      throw error;
     } else {
-      setIsCompleted(false);
+      setPosts(postdata.data);
+      setTotalPages(postdata.totalPages);
     }
   };
+
+  useEffect(() => {
+    handlePageChange();
+  }, [currentPage]);
+
   return (
     <>
       <Page title="Blogs">
@@ -62,22 +70,58 @@ export default function BlogPage() {
             <BlogPostsSearch />
             <BlogPostsSort options={SORT_OPTIONS} />
           </Stack>
-          {posts.length <= 0 ? <Typography variant="h6">404 Not Found</Typography> : null}
+          {posts.length <= 0 ? <Typography variant="body1">Post loading...</Typography> : null}
           <Grid container sx={{ mb: 5 }} spacing={3}>
-            {slicedata.map((post, index) => (
+            {posts.map((post, index) => (
               <BlogPostCard key={index} post={post} index={index} />
             ))}
           </Grid>
-          {isCompleted ? (
-            ''
-          ) : (
-            <StackStyle>
-              <Button onClick={() => LoadData()} size="small" type="submit" variant="containedInherit">
-                View More
-              </Button>
-              <Pagination count={10} variant="outlined" shape="rounded" />
-            </StackStyle>
-          )}
+
+          <StackStyle>
+            <Stack spacing={2} direction="row-reverse">
+              {currentPage < totalPages ? (
+                <Button
+                  size="small"
+                  variant="containedInherit"
+                  startIcon={<Iconify icon="iconoir-skip-next" />}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  NextPage
+                </Button>
+              ) : (
+                <Button
+                  disabled={buttonLoading && true}
+                  size="small"
+                  startIcon={<Iconify icon="iconoir-skip-next" />}
+                  variant="containedInherit"
+                >
+                  NextPage
+                </Button>
+              )}
+              <Typography variant="body2">
+                {currentPage} / {totalPages}
+              </Typography>
+              {currentPage > 1 ? (
+                <Button
+                  startIcon={<Iconify icon="iconoir:skip-prev" />}
+                  size="small"
+                  variant="containedInherit"
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  previous
+                </Button>
+              ) : (
+                <Button
+                  disabled={buttonLoading && true}
+                  size="small"
+                  startIcon={<Iconify icon="iconoir:skip-prev" />}
+                  variant="containedInherit"
+                >
+                  previous
+                </Button>
+              )}
+            </Stack>
+          </StackStyle>
         </Container>
       </Page>
     </>

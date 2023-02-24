@@ -23,17 +23,15 @@ const navConfig = [
     path: '/2023/service',
     icon: getIcon('ic_cart'),
   },
-
-  {
-    title: 'Create Post',
-    path: '/2023/project',
-    icon: getIcon('ic_project'),
-  },
-
   {
     title: 'Blogs',
     path: '/2023/blogpage',
     icon: getIcon('ic_blog'),
+  },
+  {
+    title: 'Preview',
+    path: '/2023/preview',
+    icon: getIcon('ic_preview'),
   },
 ];
 

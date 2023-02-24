@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Container, Typography, Box } from '@mui/material';
+import { motion } from 'framer-motion';
 import Page from '../Page';
 import { AppWidgetSummary } from '../../sections/@dashboard/app';
 
@@ -16,38 +17,46 @@ const Service = () => (
           We write articles on current and Interesting Technicals Topic to spread knowledge and sometimes on Social
           Causes too.
         </Typography>
-        <Grid sx={{ mb: 5 }} container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Cloud Developer" icon={'vscode-icons:file-type-aws'} />
+        <motion.div initial={{ x: '100vw' }} animate={{ x: 0 }} transition={{ type: 'spring', delay: 1.5 }}>
+          <Grid sx={{ mb: 5 }} container spacing={3}>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="User Design" icon={'mdi:material-ui'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="SEO Maintan" color="info" icon={'icon-park-solid:seo'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="DNS Configration" color="warning" icon={'eos-icons:dns'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="React Developer" color="error" icon={'vscode-icons:file-type-preact'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Logo Design" color="gray" icon={'skill-icons:figma-dark'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Api Intigration" color="secondary" icon={'tabler:api'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Website Maintenance" color="yellow" icon={'pajamas:issue-type-maintenance'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Social Media" color="pink2" icon={'ion:social-chrome'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Youtube Video" color="warning" icon={'mdi:youtube-tv'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Desktop Website" color="gray" icon={'fluent-mdl2:website'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="DNS Configration" color="warning" icon={'eos-icons:dns'} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Marriage Video Editing" color="gray" icon={'logos:adobe-after-effects'} />
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="SEO Maintan" color="info" icon={'icon-park-solid:seo'} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="DNS Configration" color="warning" icon={'eos-icons:dns'} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="React Developer" color="error" icon={'vscode-icons:file-type-preact'} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="DataBase Supporting" color="gray" icon={'logos:mongodb-icon'} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Api Intigration" color="secondary" icon={'tabler:api'} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Mobile Responsive Support" color="yellow" icon={'ant-design:mobile-filled'} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Linux Developer" color="pink2" icon={'vscode-icons:folder-type-linux-opened'} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Java Developer" color="pink" icon={'vscode-icons:file-type-java'} />
-          </Grid>
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Website" color="gray" icon={'el:website-alt'} />
-          </Grid>
-        </Grid>
+        </motion.div>
       </Container>
     </Page>
   </>

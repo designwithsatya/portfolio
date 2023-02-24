@@ -10,7 +10,7 @@ const Wrapper = styled.section`
 
   .top-btn {
     font-size: 0.9rem;
-    background: #6747c7;
+    background: #6747c7 !important;
     border-radius: 3px;
     padding: 5px;
     height: 14rem;
@@ -25,6 +25,7 @@ const Wrapper = styled.section`
     cursor: pointer;
     transition: all 0.5s ease 0s;
     color: #fff;
+    box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
 
     & {
       animation: gototop 1.2s linear infinite alternate-reverse;

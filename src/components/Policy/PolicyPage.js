@@ -1,39 +1,33 @@
-import React from 'react';
-// import { styled } from '@mui/material/styles';
-import { Typography, Container, Box, Card, CardContent } from '@mui/material';
-import Page from '../Page';
+import React, { useState } from 'react';
+import { Accordion, Container, Card } from '@mui/material';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Typography from '@mui/material/Typography';
+import Iconify from '../Iconify';
 
-// const Follow = styled(Box)(() => ({
-//   position: 'absolute',
-//   top: '-4px',
-//   right: '15px',
-//   width: '48px',
-//   height: '55px',
-//   display: 'flex',
-//   flexDirection: 'row',
-//   justifyContent: 'center',
-//   alignItems: 'center',
-// }));
-// const Stripe = styled(Box)(() => ({
-//   transform: 'skew(-29deg)',
-//   backgroundColor: '#59d7a3',
-//   height: '100%',
-//   width: '100%',
-//   display: 'flex',
-//   flexDirection: 'row',
-//   alignItems: 'center',
-// }));
+export default function PolicyPage() {
+  const [expanded, setExpanded] = useState(false);
 
-const PrivacyPolicy = () => (
-  <>
-    <Page title="privacypolicy">
-      <Container maxWidth="lg">
-        <Card>
-          <CardContent>
-            <Box sx={{ mb: 1 }}>
-              <Typography style={{ color: 'black' }} variant="h6" sx={{ mb: 1 }}>
-                PrivacyPolicy
-              </Typography>
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
+  return (
+    <>
+      <Container>
+        <Typography variant="h6" sx={{ mb: 5 }}>
+          Privacy Policy
+        </Typography>
+        <Card sx={{ padding: '20px' }}>
+          <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+            <AccordionSummary
+              expandIcon={<Iconify icon="eva:plus-fill" />}
+              aria-controls="panel1bh-content"
+              id="panel1bh-header"
+            >
+              <Typography variant="subtitle2">I am an accordion</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
               <Typography variant="body2">
                 Effective date: July 29, 2018 Designwithsatya("us", "we", or "our") operates the
                 https://designwithsatya.com/ website (the "Service"). This page informs you of our policies regarding
@@ -42,15 +36,32 @@ const PrivacyPolicy = () => (
                 you agree to the collection and use of information in accordance with this policy. Unless otherwise
                 defined in this Privacy Policy,
               </Typography>
-            </Box>
-            <Box sx={{ mb: 1 }}>
-              <Typography style={{ color: 'black' }} variant="h6" sx={{ mb: 1 }}>
-                Information Collection And Use
-              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+            <AccordionSummary
+              expandIcon={<Iconify icon="eva:plus-fill" />}
+              aria-controls="panel2bh-content"
+              id="panel2bh-header"
+            >
+              <Typography variant="subtitle2">Information Collection And Use</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
               <Typography variant="body2">
                 We collect several different types of information for various purposes to provide and improve our
                 Service to you. Types of Data Collected
               </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+            <AccordionSummary
+              expandIcon={<Iconify icon="eva:plus-fill" />}
+              aria-controls="panel3bh-content"
+              id="panel3bh-header"
+            >
+              <Typography variant="subtitle2">Filtering has been entirely disabled for whole web server</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
               <Typography variant="body2">
                 Personal Data While using our Service, we may ask you to provide us with certain personally identifiable
                 information that can be used to contact or identify you ("Personal Data"). Personally, identifiable
@@ -69,22 +80,28 @@ const PrivacyPolicy = () => (
                 Preference Cookies. We use Preference Cookies to remember your preferences and various settings.
                 Security Cookies. We use Security Cookies for security purposes.
               </Typography>
-            </Box>
-            <Box sx={{ mb: 1 }}>
-              <Typography style={{ color: 'black' }} variant="h6" sx={{ mb: 1 }}>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
+            <AccordionSummary
+              expandIcon={<Iconify icon="eva:plus-fill" />}
+              aria-controls="panel4bh-content"
+              id="panel4bh-header"
+            >
+              <Typography variant="subtitle2" sx={{ width: '33%', flexShrink: 0 }}>
                 Security Of Data
               </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
               <Typography variant="body2">
                 The security of your data is important to us, but remember that no method of transmission over the
                 Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable
                 means to protect your Personal Data, we cannot guarantee its absolute security.
               </Typography>
-            </Box>
-          </CardContent>
+            </AccordionDetails>
+          </Accordion>
         </Card>
       </Container>
-    </Page>
-  </>
-);
-
-export default PrivacyPolicy;
+    </>
+  );
+}
