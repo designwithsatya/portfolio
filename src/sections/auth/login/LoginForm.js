@@ -29,7 +29,7 @@ export default function LoginForm() {
   const PostData = async (e) => {
     e.preventDefault();
     const { name, email, phone, work, password, cpassword } = user;
-    const res = await fetch('/register', {
+    const res = await fetch(`process.env.REACT_APP_SERVER_URL/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
