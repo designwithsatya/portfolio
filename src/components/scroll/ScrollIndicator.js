@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import LinearProgress from '@mui/material/LinearProgress';
 
 const ScrollIndicator = () => {
   const [scrollPercentage, setScrollPercentage] = useState(0);
@@ -16,11 +15,7 @@ const ScrollIndicator = () => {
     };
   }, []);
 
-  return (
-    <div className="scroll_indicator">
-      <LinearProgress color="success" style={{ width: `${scrollPercentage}%` }} />
-    </div>
-  );
+  return <div style={{ width: `${scrollPercentage}%`, height: '2px', borderBottom: '5px solid green' }} />;
 };
 
 export default ScrollIndicator;

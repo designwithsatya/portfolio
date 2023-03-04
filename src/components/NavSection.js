@@ -37,13 +37,13 @@ function NavItem({ item, active }) {
   };
 
   const activeRootStyle = {
-    color: 'text.primary',
+    color: 'text.blugray',
     bgcolor: 'action.selected',
     fontWeight: 'fontWeightBold',
   };
 
   const activeSubStyle = {
-    color: 'text-primary ',
+    color: 'text.primary ',
     fontWeight: 'fontWeightMedium',
   };
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // material
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import { Box, Stack, AppBar, Toolbar, Typography, Tooltip } from '@mui/material';
 
@@ -11,15 +11,14 @@ import { Box, Stack, AppBar, Toolbar, Typography, Tooltip } from '@mui/material'
 import Iconify from '../../components/Iconify';
 import AccountPopover from './AccountPopover';
 import ScrollIndicator from '../../components/scroll/ScrollIndicator';
+import { bgBlur } from '../../utils/cssStyles';
 
 const APPBAR_MOBILE = 64;
-const APPBAR_DESKTOP = 65;
+const APPBAR_DESKTOP = 64;
 
 const RootStyle = styled(AppBar)(({ theme }) => ({
   boxShadow: 'none',
-  backdropFilter: 'blur(6px)',
-  WebkitBackdropFilter: 'blur(6px)', // Fix on Mobile
-  backgroundColor: alpha(theme.palette.background.default, 0.72),
+  ...bgBlur({ color: theme.palette.grey[400] }),
 }));
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -28,9 +27,6 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
     minHeight: APPBAR_DESKTOP,
     padding: theme.spacing(0, 5),
   },
-}));
-const CourcesStyle = styled(Typography)(({ theme }) => ({
-  color: theme.palette.grey[800],
 }));
 
 DashboardNavbar.propTypes = {
@@ -42,39 +38,37 @@ export default function DashboardNavbar({ onOpenSidebar }) {
     <>
       <RootStyle>
         <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static" color="inherit">
-            <ToolbarStyle>
-              <IconButton onClick={onOpenSidebar} sx={{ color: '#212B36', mr: 1 }}>
-                <Tooltip title="Menu" arrow>
-                  <Iconify icon="eva:menu-2-fill" />
-                </Tooltip>
-              </IconButton>
-              <Typography id="mynamestyle1" variant="subtitle2" sx={{ flexGrow: 1 }}>
-                <NavLink id="mynamestyle1" to="/" style={{ textDecoration: 'none' }}>
-                  DESIGNWITHSATYA
-                </NavLink>
-              </Typography>
-              <Stack direction="row" alignItems="center" spacing={{ xs: 1.5, sm: 1.5 }}>
-                <NavLink
-                  to="/2023/blogs/sourcecode"
-                  style={{
-                    textDecoration: 'none',
-                    color: '#fff',
-                    background: '#6747c7',
-                    fontSize: '12px',
-                    fontWeight: 'bold',
-                    padding: '7px',
-                    borderRadius: '3px',
-                    boxShadow: '0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f',
-                  }}
-                >
-                  SOURCECODE
-                </NavLink>
-                <AccountPopover />
-              </Stack>
-            </ToolbarStyle>
-            <ScrollIndicator />
-          </AppBar>
+          <ToolbarStyle>
+            <IconButton onClick={onOpenSidebar} sx={{ mr: 1 }}>
+              <Tooltip title="Menu" arrow>
+                <Iconify icon="eva:menu-2-fill" />
+              </Tooltip>
+            </IconButton>
+            <Typography id="mynamestyle1" variant="subtitle2" sx={{ flexGrow: 1 }}>
+              <NavLink id="mynamestyle1" to="/" style={{ textDecoration: 'none' }}>
+                DESIGNWITHSATYA
+              </NavLink>
+            </Typography>
+            <Stack direction="row" alignItems="center" spacing={{ xs: 1.5, sm: 1.5 }}>
+              <NavLink
+                to="/2023/blogs/sourcecode"
+                style={{
+                  textDecoration: 'none',
+                  color: '#fff',
+                  background: '#6747c7',
+                  fontSize: '12px',
+                  fontWeight: 'bold',
+                  padding: '7px',
+                  borderRadius: '3px',
+                  boxShadow: '0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f',
+                }}
+              >
+                SOURCECODE
+              </NavLink>
+              <AccountPopover />
+            </Stack>
+          </ToolbarStyle>
+          <ScrollIndicator />
         </Box>
       </RootStyle>
     </>

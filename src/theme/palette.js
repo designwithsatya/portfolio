@@ -10,6 +10,8 @@ const BLUEGRAY = {
   300: '#8563EB',
   400: '#7650E8',
   500: '#6747c7',
+  500_8: alpha('#7650E8', 0.08),
+  500_16: alpha('#7650E8', 0.16),
 };
 const GREY = {
   0: '#FFFFFF',
@@ -142,12 +144,12 @@ const palette = {
   grey: GREY,
   gradients: GRADIENTS,
   divider: alpha(GREY[500], 0.24),
-  text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
+  text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500], blugray: BLUEGRAY[500] },
   background: { paper: '#fff', default: GREY[100], neutral: GREY[200] },
   action: {
     active: GREY[100],
-    hover: GREY[500_8],
-    selected: GREY[500_16],
+    hover: BLUEGRAY[500_8],
+    selected: BLUEGRAY[500_16],
     disabled: GREY[500_80],
     disabledBackground: GREY[500_24],
     focus: GREY[500_24],
