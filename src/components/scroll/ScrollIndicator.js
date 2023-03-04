@@ -15,7 +15,7 @@ const ScrollIndicator = () => {
     };
   }, []);
 
-  return <div style={{ width: `${scrollPercentage}%`, height: '2px', borderBottom: '5px solid green' }} />;
+  return <div style={{ width: `${scrollPercentage}%`, height: '2px', borderBottom: '5px solid #6747c7' }} />;
 };
 
 export default ScrollIndicator;

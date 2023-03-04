@@ -63,20 +63,11 @@ const Home = () => (
           ABOUT ME
         </Typography>
         <Box style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <span style={{ color: '#ff7a18', fontWeight: '900' }}>A WEBSITE FOR</span>
+          <span style={{ color: '#ff9800', fontWeight: '900' }}>A WEBSITE FOR</span>
           <MyTypoGraphyAuto>
             <span>
               <Typical
-                steps={[
-                  'YOUTUBE SOURCECODE',
-                  2000,
-                  'DESIGNWITHSATYA',
-                  2000,
-                  'WEBDEVELOPER',
-                  2000,
-                  'DESIGNWITHME',
-                  2000,
-                ]}
+                steps={['REACTDEVELOPER', 2000, 'DESIGNWITHSATYA', 2000, 'WEBDEVELOPER', 2000, 'DESIGNWITHME', 2000]}
                 loop={Infinity}
               />
             </span>

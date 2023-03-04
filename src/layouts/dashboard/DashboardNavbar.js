@@ -18,7 +18,7 @@ const APPBAR_DESKTOP = 64;
 
 const RootStyle = styled(AppBar)(({ theme }) => ({
   boxShadow: 'none',
-  ...bgBlur({ color: theme.palette.grey[400] }),
+  ...bgBlur({ color: theme.palette.grey[100] }),
 }));
 
 const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
@@ -38,10 +38,11 @@ export default function DashboardNavbar({ onOpenSidebar }) {
     <>
       <RootStyle>
         <Box sx={{ flexGrow: 1 }}>
+          <ScrollIndicator />
           <ToolbarStyle>
             <IconButton onClick={onOpenSidebar} sx={{ mr: 1 }}>
               <Tooltip title="Menu" arrow>
-                <Iconify icon="eva:menu-2-fill" />
+                <Iconify color="#637381" icon="eva:menu-2-fill" />
               </Tooltip>
             </IconButton>
             <Typography id="mynamestyle1" variant="subtitle2" sx={{ flexGrow: 1 }}>
@@ -68,7 +69,6 @@ export default function DashboardNavbar({ onOpenSidebar }) {
               <AccountPopover />
             </Stack>
           </ToolbarStyle>
-          <ScrollIndicator />
         </Box>
       </RootStyle>
     </>
