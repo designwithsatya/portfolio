@@ -6,8 +6,8 @@ import { Container } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Blog from './Blog';
 import Mysidebar from './Mysidebar';
-import TopCommentBox from '../components/comentbox/TopCommentBox';
-import MessageScroll from '../MessageScroll';
+// import TopCommentBox from '../components/comentbox/TopCommentBox';
+// import MessageScroll from '../MessageScroll';
 
 const MainStyle = styled(Box)(() => ({
   width: '100%',
@@ -30,8 +30,8 @@ const BlogsLayout = () => {
             </Grid>
           </Grid>
         </MainStyle>
-        <TopCommentBox />
-        <MessageScroll />
+        {/* <TopCommentBox />
+        <MessageScroll /> */}
       </Container>
     </>
   );

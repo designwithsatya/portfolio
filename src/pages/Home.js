@@ -60,7 +60,7 @@ const Home = () => (
       <UnderRootStyle>
         <MyTypoGraphy>WELCOME TO DESIGNWITHSATYA</MyTypoGraphy>
         <Typography variant="h6" sx={{ mb: 2 }}>
-          ABOUT ME
+          Happy Holi Blessings To All Of You 👍
         </Typography>
         <Box style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
           <span style={{ color: '#ff9800', fontWeight: '900' }}>A WEBSITE FOR</span>

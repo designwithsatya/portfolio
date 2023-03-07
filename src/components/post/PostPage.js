@@ -30,6 +30,7 @@ export default function PostPage() {
   if (!postInfo) return '';
   const base64ImageString = Buffer.from(postInfo.cover.data.data, 'binary').toString('base64');
 
+  console.log(userInfo);
   return (
     <>
       <Stack
@@ -42,7 +43,7 @@ export default function PostPage() {
         borderRadius="4px"
         mb={5}
       >
-        <Typography variant="subtitle1">Author - {postInfo.author.name}</Typography>
+        {/* <Typography variant="subtitle1">Author - {postInfo.author.name}</Typography> */}
         <Typography variant="subtitle1"> {fDateTime(postInfo.createdAt)}</Typography>
       </Stack>
       <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>

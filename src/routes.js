@@ -23,6 +23,8 @@ const SourseCode = React.lazy(() => import('./components/soursecode/SourseCode')
 const Traffic = React.lazy(() => import('./pages/TrafficBySite'));
 const PostPage = React.lazy(() => import('./components/post/PostPage'));
 const EditPost = React.lazy(() => import('./components/post/EditPost'));
+const Experience = React.lazy(() => import('./components/work/Experience'));
+const Team = React.lazy(() => import('./components/work/Team'));
 
 export default function Router() {
   return useRoutes([
@@ -41,6 +43,8 @@ export default function Router() {
         { path: 'blogpage', element: <BlogPage /> },
         { path: 'privacypolicy', element: <PrivacyPolicy /> },
         { path: 'preview', element: <Traffic /> },
+        { path: 'experience', element: <Experience /> },
+        { path: 'team', element: <Team /> },
 
         {
           path: 'blogs',

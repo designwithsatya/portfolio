@@ -27,11 +27,16 @@ const navConfig = [
     title: 'Blogs',
     path: '/2023/blogpage',
     icon: getIcon('ic_blog'),
+  },
+  {
+    title: 'Work',
+    icon: getIcon('ic_work'),
     children: [
-      { title: 'Blog Posts', path: '/marketing/blog' },
-      { title: 'Blog Post', path: '/marketing/blog/post-01' },
+      { title: 'Team', path: '/2023/team' },
+      { title: 'experience', path: '/2023/experience' },
     ],
   },
+
   {
     title: 'Preview',
     path: '/2023/preview',
