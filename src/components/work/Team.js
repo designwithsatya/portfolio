@@ -1,8 +1,28 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Container, Stack, Typography } from '@mui/material';
 import Slider from 'react-slick';
 import TeamCard from '../../sections/@dashboard/team/TeamCard';
 import team from '../../_mock/team';
+import Iconify from '../Iconify';
+import '../banner/carousel.css';
+
+const PreviousBtn = (props) => {
+  const { className, onClick } = props;
+  return (
+    <button type="button" className={className} onClick={onClick}>
+      <Iconify color="#637381" icon="material-symbols:chevron-left" />
+    </button>
+  );
+};
+const NextBtn = (props) => {
+  const { className, onClick } = props;
+  return (
+    <button type="button" className={className} onClick={onClick}>
+      <Iconify color="#637381" icon="material-symbols:chevron-right" />
+    </button>
+  );
+};
 
 export default function Team() {
   const settings = {
@@ -12,6 +32,8 @@ export default function Team() {
     initialSlide: 0,
     infinite: false,
     speed: 500,
+    prevArrow: <PreviousBtn />,
+    nextArrow: <NextBtn />,
     responsive: [
       {
         breakpoint: 1024,
@@ -42,12 +64,17 @@ export default function Team() {
   return (
     <>
       <Container>
-        <Stack>
-          <Typography variant="h5" sx={{ mb: 5, mt: 5 }}>
+        <Stack textAlign="center">
+          <Typography variant="h6" sx={{ mt: 5 }}>
             Meet Our Team
           </Typography>
+          <Typography variant="subtitle1" sx={{ mb: 5 }}>
+            We are team and we all are working as a software engineering in diffrent diffrent programming language.if
+            you have any project and need our team on that project we are ready to help.( Thank You, you gave your time
+            and read all these. Have a great day).
+          </Typography>
         </Stack>
-        <div>
+        <div className="carousel">
           <Slider {...settings}>
             {team.map((team, index) => {
               return <TeamCard key={index} team={team} />;
@@ -58,3 +85,12 @@ export default function Team() {
     </>
   );
 }
+
+NextBtn.propTypes = {
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+};
+PreviousBtn.propTypes = {
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+};

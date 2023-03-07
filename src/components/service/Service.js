@@ -8,8 +8,8 @@ const Service = () => (
   <>
     <Page title="Services">
       <Container>
-        <Box style={{ display: 'flex', justifyContent: 'center' }}>
-          <Typography className="about" variant="h6" sx={{ mb: 5 }}>
+        <Box sx={{ mb: 5, mt: 5 }} style={{ display: 'flex', justifyContent: 'center' }}>
+          <Typography className="about" variant="h6">
             What Do We Offer
           </Typography>
         </Box>

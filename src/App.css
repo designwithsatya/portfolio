@@ -100,6 +100,7 @@ ul {
     width: -webkit-max-content;
     width: max-content;
 }
+
 .cardhover{
 transition: transform 02s;
 box-shadow: 0px 10px 10px rgba(188, 92, 92, 0.3);
@@ -214,12 +215,5 @@ element.style {
     pointer-events: none;
     color: #F9FAFB;
 } 
-.slick-prev:before, .slick-next:before {
-    font-family: 'slick';
-    font-size: 20px;
-    line-height: 1;
-    opacity: .75;
-    color: #673de6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+
+
