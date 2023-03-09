@@ -1,9 +1,13 @@
+import { Container, Typography } from '@mui/material';
 import React from 'react';
+import Page from '../Page';
 
 export default function Experience() {
   return (
-    <>
-      <h2>Experience</h2>
-    </>
+    <Page title="Work Experience">
+      <Container>
+        <Typography variant="h6">Work Experience</Typography>
+      </Container>
+    </Page>
   );
 }

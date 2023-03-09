@@ -1,6 +1,7 @@
 import { Box, Card, Paper, Typography, CardContent, Container } from '@mui/material';
 import { fShortenNumber } from '../utils/formatNumber';
 import Iconify from '../components/Iconify';
+import Page from '../components/Page';
 
 const list = [
   {
@@ -27,7 +28,7 @@ const list = [
 
 export default function TrafficBySite() {
   return (
-    <>
+    <Page title="Analytics">
       <Container>
         <Typography sx={{ mb: 5 }} variant="h6">
           Google Analytics
@@ -56,6 +57,6 @@ export default function TrafficBySite() {
           </CardContent>
         </Card>
       </Container>
-    </>
+    </Page>
   );
 }

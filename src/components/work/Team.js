@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import TeamCard from '../../sections/@dashboard/team/TeamCard';
 import team from '../../_mock/team';
 import Iconify from '../Iconify';
+import Page from '../Page';
 import '../banner/carousel.css';
 
 const PreviousBtn = (props) => {
@@ -62,14 +63,14 @@ export default function Team() {
   };
 
   return (
-    <>
+    <Page title="Team">
       <Container>
         <Stack textAlign="center">
           <Typography variant="h6" sx={{ mt: 5 }}>
             Meet Our Team
           </Typography>
           <Typography variant="subtitle1" sx={{ mb: 5 }}>
-            We are team and we all are working as a software engineering in diffrent diffrent programming language.if
+            We are team and we all are working as a software engineering in different different programming language.if
             you have any project and need our team on that project we are ready to help.( Thank You, you gave your time
             and read all these. Have a great day).
           </Typography>
@@ -82,7 +83,7 @@ export default function Team() {
           </Slider>
         </div>
       </Container>
-    </>
+    </Page>
   );
 }
 

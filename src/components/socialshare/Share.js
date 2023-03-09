@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import {
@@ -23,11 +24,6 @@ const ICON_DEFAULTS = {
 };
 
 export const Share = ({ url, message, hashtags }) => {
-  const fb = {
-    url,
-    quote: message,
-    hashtag: hashtags[0],
-  };
   return (
     <>
       <MainStyle>
@@ -46,4 +42,10 @@ export const Share = ({ url, message, hashtags }) => {
       </MainStyle>
     </>
   );
+};
+
+Share.propTypes = {
+  url: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  hashtags: PropTypes.string.isRequired,
 };

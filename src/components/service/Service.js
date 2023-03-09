@@ -8,15 +8,17 @@ const Service = () => (
   <>
     <Page title="Services">
       <Container>
-        <Box sx={{ mb: 5, mt: 5 }} style={{ display: 'flex', justifyContent: 'center' }}>
+        <Box sx={{ mt: 5 }} style={{ display: 'flex', justifyContent: 'center' }}>
           <Typography className="about" variant="h6">
-            What Do We Offer
+            OUR SERVICES
           </Typography>
         </Box>
-        <Typography variant="subtitle1" sx={{ mb: 5, textAlign: 'center' }}>
-          We write articles on current and Interesting Technicals Topic to spread knowledge and sometimes on Social
-          Causes too.
-        </Typography>
+        <Box sx={{ mb: 5, textAlign: 'center' }}>
+          <Typography variant="h4">You do business we do the softwere</Typography>
+          <Typography variant="body2">
+            Since 2020, we have helped 5 companies launch over 1k incredible products
+          </Typography>
+        </Box>
         <motion.div initial={{ x: '100vw' }} animate={{ x: 0 }} transition={{ type: 'spring', delay: 1.5 }}>
           <Grid sx={{ mb: 5 }} container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>

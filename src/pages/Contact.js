@@ -63,15 +63,15 @@ export default function EcommerceShop() {
   };
 
   return (
-    <Page title="Contact Us">
+    <Page title="Contact">
       <Container>
         <Box style={{ display: 'flex', justifyContent: 'center' }}>
-          <Typography className="about" variant="h6" sx={{ mb: 5 }}>
+          <Typography className="about" variant="h6">
             Get in Touch
           </Typography>
         </Box>
         <Box style={{ marginTop: '15px' }} sx={{ mb: 5, mx: 2.5 }}>
-          <Typography variant="subtitle1" sx={{ mt: 5, textAlign: 'justify' }}>
+          <Typography variant="subtitle1" sx={{ textAlign: 'justify' }}>
             Hello Everyone! Have a great day :) I am here to help you. If you want to know something or you have any
             suggestion then please mail me. Thank You.
           </Typography>

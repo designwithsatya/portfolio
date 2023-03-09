@@ -27,7 +27,7 @@ const Stripe = styled(Box)(() => ({
 
 const About = () => (
   <>
-    <Page title="About Me">
+    <Page title="About">
       <Container maxWidth="lg">
         <Typography variant="h5" sx={{ mb: 2 }}>
           We The Web Developer

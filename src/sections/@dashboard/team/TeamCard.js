@@ -24,6 +24,10 @@ const StyledCover = styled('img')({
   position: 'absolute',
   marginTop: '20px',
   borderRadius: '50%',
+  '&:hover': {
+    filter: 'grayscale(100%)',
+    transition: '1s',
+  },
 });
 
 // ----------------------------------------------------------------------
