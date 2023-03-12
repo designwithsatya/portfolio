@@ -1,31 +1,41 @@
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
+// @mui
 import { CssBaseline } from '@mui/material';
-import { ThemeProvider as MUIThemeProvider, createTheme, StyledEngineProvider } from '@mui/material/styles';
+import { createTheme, StyledEngineProvider, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
+// components
+import { useSettingsContext } from '../components/settings';
+//
 import palette from './palette';
 import typography from './typography';
-import GlobalStyles from './globalStyles';
-import componentsOverride from './overrides';
 import shadows from './shadows';
 import customShadows from './customShadows';
+import componentsOverride from './overrides';
+import GlobalStyles from './globalStyles';
+
+// ----------------------------------------------------------------------
 
 ThemeProvider.propTypes = {
   children: PropTypes.node,
 };
 
 export default function ThemeProvider({ children }) {
+  const { themeMode, themeDirection } = useSettingsContext();
+
   const themeOptions = useMemo(
     () => ({
-      palette,
-      shape: { borderRadius: 8 },
+      palette: palette(themeMode),
       typography,
-      shadows,
-      customShadows: customShadows(),
+      shape: { borderRadius: 8 },
+      direction: themeDirection,
+      shadows: shadows(themeMode),
+      customShadows: customShadows(themeMode),
     }),
-    []
+    [themeDirection, themeMode]
   );
 
   const theme = createTheme(themeOptions);
+
   theme.components = componentsOverride(theme);
 
   return (

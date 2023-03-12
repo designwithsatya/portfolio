@@ -1,19 +1,9 @@
 // @mui
 import PropTypes from 'prop-types';
-import { alpha, styled } from '@mui/material/styles';
+import { alpha, useTheme } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
 import Iconify from '../../../components/Iconify';
-
-const IconWrapperStyle = styled('div')(({ theme }) => ({
-  margin: 'auto',
-  display: 'flex',
-  borderRadius: '50%',
-  alignItems: 'center',
-  width: theme.spacing(8),
-  height: theme.spacing(8),
-  justifyContent: 'center',
-  marginBottom: theme.spacing(3),
-}));
+import { bgGradient } from '../../../utils/cssStyles';
 
 // ----------------------------------------------------------------------
 
@@ -25,31 +15,36 @@ AppWidgetSummary.propTypes = {
 };
 
 export default function AppWidgetSummary({ title, icon, color = 'primary', sx, ...other }) {
+  const theme = useTheme();
   return (
     <Card
-      className="cardhover"
       sx={{
         py: 5,
         boxShadow: 0,
         textAlign: 'center',
-        color: (theme) => theme.palette[color].darker,
-        bgcolor: (theme) => theme.palette[color].lighter,
+        color: theme.palette[color].darker,
+        bgcolor: theme.palette[color].lighter,
         ...sx,
       }}
       {...other}
     >
-      <IconWrapperStyle
+      <Iconify
+        icon={icon}
         sx={{
-          color: (theme) => theme.palette[color].dark,
-          backgroundImage: (theme) =>
-            `linear-gradient(135deg, ${alpha(theme.palette[color].dark, 0)} 0%, ${alpha(
-              theme.palette[color].dark,
-              0.24
-            )} 100%)`,
+          mb: 3,
+          p: 2.5,
+          width: 64,
+          height: 64,
+          borderRadius: '50%',
+          color: theme.palette[color].dark,
+          ...bgGradient({
+            direction: '135deg',
+            startColor: `${alpha(theme.palette[color].dark, 0)} 0%`,
+            endColor: `${alpha(theme.palette[color].dark, 0.24)} 100%`,
+          }),
         }}
-      >
-        <Iconify className="icons" icon={icon} width={35} height={35} />
-      </IconWrapperStyle>
+      />
+
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         {title}
       </Typography>

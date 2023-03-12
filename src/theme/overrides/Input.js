@@ -1,3 +1,5 @@
+import { alpha } from '@mui/material/styles';
+
 // ----------------------------------------------------------------------
 
 export default function Input(theme) {
@@ -6,7 +8,9 @@ export default function Input(theme) {
       styleOverrides: {
         root: {
           '&.Mui-disabled': {
-            '& svg': { color: theme.palette.text.disabled },
+            '& svg': {
+              color: theme.palette.text.disabled,
+            },
           },
         },
         input: {
@@ -21,7 +25,19 @@ export default function Input(theme) {
       styleOverrides: {
         underline: {
           '&:before': {
-            borderBottomColor: theme.palette.grey[500_56],
+            borderBottomColor: alpha(theme.palette.grey[500], 0.56),
+          },
+          '&:after': {
+            borderBottomColor: theme.palette.text.primary,
+          },
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          '& .MuiInputLabel-root.Mui-focused': {
+            color: theme.palette.text.primary,
           },
         },
       },
@@ -29,20 +45,21 @@ export default function Input(theme) {
     MuiFilledInput: {
       styleOverrides: {
         root: {
-          backgroundColor: theme.palette.grey[500_12],
+          borderRadius: theme.shape.borderRadius,
+          backgroundColor: alpha(theme.palette.grey[500], 0.08),
           '&:hover': {
-            backgroundColor: theme.palette.grey[500_16],
+            backgroundColor: alpha(theme.palette.grey[500], 0.16),
           },
           '&.Mui-focused': {
-            backgroundColor: theme.palette.action.focus,
+            backgroundColor: alpha(theme.palette.grey[500], 0.16),
           },
           '&.Mui-disabled': {
             backgroundColor: theme.palette.action.disabledBackground,
           },
         },
         underline: {
-          '&:before': {
-            borderBottomColor: theme.palette.grey[500_56],
+          '&:before, :after': {
+            display: 'none',
           },
         },
       },
@@ -51,7 +68,13 @@ export default function Input(theme) {
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.grey[500_32],
+            borderColor: alpha(theme.palette.grey[500], 0.32),
+          },
+          '&.Mui-focused': {
+            '& .MuiOutlinedInput-notchedOutline': {
+              borderWidth: 1,
+              borderColor: theme.palette.text.primary,
+            },
           },
           '&.Mui-disabled': {
             '& .MuiOutlinedInput-notchedOutline': {

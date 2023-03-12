@@ -34,28 +34,28 @@ const Service = () => (
               <AppWidgetSummary title="React Developer" color="error" icon={'vscode-icons:file-type-preact'} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Logo Design" color="gray" icon={'skill-icons:figma-dark'} />
+              <AppWidgetSummary title="Logo Design" color="secondary" icon={'skill-icons:figma-dark'} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Api Intigration" color="secondary" icon={'tabler:api'} />
+              <AppWidgetSummary title="Api Intigration" color="warning" icon={'tabler:api'} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Website Maintenance" color="yellow" icon={'pajamas:issue-type-maintenance'} />
+              <AppWidgetSummary title="Website Maintenance" color="secondary" icon={'pajamas:issue-type-maintenance'} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Social Media" color="pink2" icon={'ion:social-chrome'} />
+              <AppWidgetSummary title="Social Media" color="info" icon={'ion:social-chrome'} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <AppWidgetSummary title="Youtube Video" color="warning" icon={'mdi:youtube-tv'} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Desktop Website" color="gray" icon={'fluent-mdl2:website'} />
+              <AppWidgetSummary title="Desktop Website" color="secondary" icon={'fluent-mdl2:website'} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <AppWidgetSummary title="DNS Configration" color="warning" icon={'eos-icons:dns'} />
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <AppWidgetSummary title="Marriage Video Editing" color="gray" icon={'logos:adobe-after-effects'} />
+              <AppWidgetSummary title="Marriage Video Editing" color="secondary" icon={'logos:adobe-after-effects'} />
             </Grid>
           </Grid>
         </motion.div>

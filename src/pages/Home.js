@@ -86,9 +86,6 @@ const Home = () => (
             <AuthSocial />
           </Box>
         </UnderRootStyle>
-        <svg id="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path fill="#F9FAFB" d="M0,224L480,192L960,192L1440,256L1440,320L960,320L480,320L0,320Z" />
-        </svg>
       </RootStyle>
     </Page>
   </>

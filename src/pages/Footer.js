@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Box, Grid, Typography, TextField, Button } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AuthSocial from '../sections/auth/AuthSocial';
 
@@ -15,24 +15,6 @@ const MainBox = styled('div')(() => ({
   marginTop: '5%',
 }));
 
-const FooterStyle = styled('div')(({ theme }) => ({
-  width: '50%',
-  position: 'absolute',
-  display: 'flex',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  padding: '10px',
-  top: -50,
-  zIndex: 1,
-  borderRadius: Number(theme.shape.borderRadius) * 1.1,
-  backgroundColor: theme.palette.blugray[500],
-  color: theme.palette.grey[100],
-  [theme.breakpoints.down('sm')]: {
-    width: '87%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-}));
 const Footer = () => (
   <>
     <MainBox>
@@ -74,12 +56,6 @@ const Footer = () => (
       <Box style={{ marginTop: '5px' }}>
         <Typography variant="subtitle1">Copyright © 2022 by Satyendra Rajpoot. All Right Reserved.</Typography>
       </Box>
-      <FooterStyle>
-        <TextField size="small" label="Email" type="email" color="warning" focused />
-        <Button size="small" type="submit" variant="outlinedInherit">
-          Subscribe
-        </Button>
-      </FooterStyle>
     </MainBox>
   </>
 );

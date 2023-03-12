@@ -1,18 +1,9 @@
 import { alpha } from '@mui/material/styles';
 
-function createGradient(color1, color2) {
-  return `linear-gradient(to bottom, ${color1}, ${color2})`;
-}
+// ----------------------------------------------------------------------
 
-const BLUEGRAY = {
-  100: '#673de6',
-  200: '#2756c1',
-  300: '#8563EB',
-  400: '#7650E8',
-  500: '#6747c7',
-  500_8: alpha('#7650E8', 0.08),
-  500_16: alpha('#7650E8', 0.16),
-};
+// SETUP COLORS
+
 const GREY = {
   0: '#FFFFFF',
   100: '#F9FAFB',
@@ -24,23 +15,15 @@ const GREY = {
   700: '#454F5B',
   800: '#212B36',
   900: '#161C24',
-  500_8: alpha('#919EAB', 0.08),
-  500_12: alpha('#919EAB', 0.12),
-  500_16: alpha('#919EAB', 0.16),
-  500_24: alpha('#919EAB', 0.24),
-  500_32: alpha('#919EAB', 0.32),
-  500_48: alpha('#919EAB', 0.48),
-  500_56: alpha('#919EAB', 0.56),
-  500_80: alpha('#919EAB', 0.8),
 };
 
 const PRIMARY = {
-  lighter: '#D1E9FC',
-  light: '#76B0F1',
-  main: '#2065D1',
-  dark: '#103996',
-  darker: '#061B64',
-  contrastText: '#fff',
+  lighter: '#C8FACD',
+  light: '#5BE584',
+  main: '#00AB55',
+  dark: '#007B55',
+  darker: '#005249',
+  contrastText: '#FFFFFF',
 };
 
 const SECONDARY = {
@@ -49,113 +32,100 @@ const SECONDARY = {
   main: '#3366FF',
   dark: '#1939B7',
   darker: '#091A7A',
-  contrastText: '#fff',
+  contrastText: '#FFFFFF',
 };
 
 const INFO = {
-  lighter: '#D0F2FF',
-  light: '#74CAFF',
-  main: '#1890FF',
-  dark: '#0C53B7',
-  darker: '#04297A',
-  contrastText: '#fff',
+  lighter: '#CAFDF5',
+  light: '#61F3F3',
+  main: '#00B8D9',
+  dark: '#006C9C',
+  darker: '#003768',
+  contrastText: '#FFFFFF',
 };
 
 const SUCCESS = {
-  lighter: '#E9FCD4',
-  light: '#AAF27F',
-  main: '#54D62C',
-  dark: '#229A16',
-  darker: '#08660D',
-  contrastText: GREY[800],
+  lighter: '#D8FBDE',
+  light: '#86E8AB',
+  main: '#36B37E',
+  dark: '#1B806A',
+  darker: '#0A5554',
+  contrastText: '#FFFFFF',
 };
 
 const WARNING = {
-  lighter: '#FFF7CD',
-  light: '#FFE16A',
-  main: '#FFC107',
-  dark: '#B78103',
-  darker: '#7A4F01',
+  lighter: '#FFF5CC',
+  light: '#FFD666',
+  main: '#FFAB00',
+  dark: '#B76E00',
+  darker: '#7A4100',
   contrastText: GREY[800],
 };
 
 const ERROR = {
-  lighter: '#FFE7D9',
-  light: '#FFA48D',
-  main: '#FF4842',
-  dark: '#B72136',
-  darker: '#7A0C2E',
-  contrastText: '#fff',
-};
-const GREEN = {
-  lighter: '#F5E075',
-  light: '#FFFF99',
-  main: '#FF4842',
-  dark: '#B72136',
-  darker: '#7A0C2E',
-  contrastText: '#fff',
-};
-const GRAY = {
-  lighter: '#B6BCDA',
-  light: '#FFFF99',
-  main: '#FF4842',
-  dark: '#B72136',
-  darker: '#7A0C2E',
-  contrastText: '#fff',
-};
-const PINK = {
-  lighter: '#E782DC',
-  light: '#FFFF99',
-  main: '#FF4842',
-  dark: '#B72136',
-  darker: '#7A0C2E',
-  contrastText: '#fff',
-};
-const PINK2 = {
-  lighter: '#E897C2',
-  light: '#FFFF99',
-  main: '#FF4842',
-  dark: '#B72136',
-  darker: '#7A0C2E',
-  contrastText: '#fff',
+  lighter: '#FFE9D5',
+  light: '#FFAC82',
+  main: '#FF5630',
+  dark: '#B71D18',
+  darker: '#7A0916',
+  contrastText: '#FFFFFF',
 };
 
-const GRADIENTS = {
-  primary: createGradient(PRIMARY.light, PRIMARY.main),
-  info: createGradient(INFO.light, INFO.main),
-  success: createGradient(SUCCESS.light, SUCCESS.main),
-  warning: createGradient(WARNING.light, WARNING.main),
-  error: createGradient(ERROR.light, ERROR.main),
-};
-
-const palette = {
-  common: { black: '#000', white: '#fff' },
-  primary: { ...PRIMARY },
-  secondary: { ...SECONDARY },
-  info: { ...INFO },
-  success: { ...SUCCESS },
-  warning: { ...WARNING },
-  error: { ...ERROR },
-  yellow: { ...GREEN },
-  gray: { ...GRAY },
-  pink: { ...PINK },
-  pink2: { ...PINK2 },
-  blugray: { ...BLUEGRAY },
+const COMMON = {
+  common: { black: '#000000', white: '#FFFFFF' },
+  primary: PRIMARY,
+  secondary: SECONDARY,
+  info: INFO,
+  success: SUCCESS,
+  warning: WARNING,
+  error: ERROR,
   grey: GREY,
-  gradients: GRADIENTS,
   divider: alpha(GREY[500], 0.24),
-  text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500], blugray: BLUEGRAY[500] },
-  background: { paper: '#fff', default: GREY[100], neutral: GREY[200] },
   action: {
-    active: GREY[100],
-    hover: BLUEGRAY[500_8],
-    selected: BLUEGRAY[500_16],
-    disabled: GREY[500_80],
-    disabledBackground: GREY[500_24],
-    focus: GREY[500_24],
+    hover: alpha(GREY[500], 0.08),
+    selected: alpha(GREY[500], 0.16),
+    disabled: alpha(GREY[500], 0.8),
+    disabledBackground: alpha(GREY[500], 0.24),
+    focus: alpha(GREY[500], 0.24),
     hoverOpacity: 0.08,
     disabledOpacity: 0.48,
   },
 };
 
-export default palette;
+export default function palette(themeMode) {
+  const light = {
+    ...COMMON,
+    mode: 'light',
+    text: {
+      primary: GREY[800],
+      secondary: GREY[600],
+      disabled: GREY[500],
+    },
+    background: { paper: '#FFFFFF', default: '#FFFFFF', neutral: GREY[200] },
+    action: {
+      ...COMMON.action,
+      active: GREY[600],
+    },
+  };
+
+  const dark = {
+    ...COMMON,
+    mode: 'dark',
+    text: {
+      primary: '#FFFFFF',
+      secondary: GREY[500],
+      disabled: GREY[600],
+    },
+    background: {
+      paper: GREY[800],
+      default: GREY[900],
+      neutral: alpha(GREY[500], 0.16),
+    },
+    action: {
+      ...COMMON.action,
+      active: GREY[500],
+    },
+  };
+
+  return themeMode === 'light' ? light : dark;
+}

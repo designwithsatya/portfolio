@@ -8,6 +8,7 @@ import { initialState, reducer } from './reducer/UseReducer';
 import Support from './components/Support';
 
 import { ContextProvider } from './context/Context';
+import { SettingsProvider } from './components/settings';
 
 export const UserContext = createContext();
 export default function App() {
@@ -16,13 +17,15 @@ export default function App() {
   return (
     <UserContext.Provider value={{ state, dispatch }}>
       <ContextProvider>
-        <ThemeProvider>
-          <Support />
-          <ScrollToTop />
-          <Suspense fallback={<Loading />}>
-            <Router />
-          </Suspense>
-        </ThemeProvider>
+        <SettingsProvider>
+          <ThemeProvider>
+            <Support />
+            <ScrollToTop />
+            <Suspense fallback={<Loading />}>
+              <Router />
+            </Suspense>
+          </ThemeProvider>
+        </SettingsProvider>
       </ContextProvider>
     </UserContext.Provider>
   );
